@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 import { loggingOut } from '../redux/apiCalls'
 import { FaShoppingCart } from 'react-icons/fa';
 import { SlMenu } from 'react-icons/sl';
-import NotificationBadge from 'react-notification-badge';
-import {Effect} from 'react-notification-badge';
 
 const Container = styled.div`
   ${mobile({ width: "100vw" })};
@@ -42,6 +40,19 @@ align-items:center;
 justify-content: flex-end;
 `;
 
+const Badge = styled.p`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 10px;
+  left: 15px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: orange;
+  margin-bottom: -20px;
+`
 
 const Logo = styled.h1`
   font-weight: bold;
@@ -114,7 +125,7 @@ const Navbar = () => {
             <MenuItem>Hello {user.username}</MenuItem>
           }
           <MenuItem>
-            <NotificationBadge count={quantity} color="secondary" />
+            <Badge>{quantity}</Badge>
               <Link style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }} to={"/cart"}>
                 <FaShoppingCart size={'25px'} />
               </Link>
