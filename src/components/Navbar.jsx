@@ -1,11 +1,13 @@
-import { Badge } from '@material-ui/core'
-import { HorizontalSplit, ShoppingCartOutlined } from '@material-ui/icons'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { mobile } from '../responsive'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { loggingOut } from '../redux/apiCalls'
+import { FaShoppingCart } from 'react-icons/fa';
+import { SlMenu } from 'react-icons/sl';
+import NotificationBadge from 'react-notification-badge';
+import {Effect} from 'react-notification-badge';
 
 const Container = styled.div`
   ${mobile({ width: "100vw" })};
@@ -112,15 +114,14 @@ const Navbar = () => {
             <MenuItem>Hello {user.username}</MenuItem>
           }
           <MenuItem>
-            <Badge badgeContent={quantity} color="secondary">
+            <NotificationBadge count={quantity} color="secondary" />
               <Link style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }} to={"/cart"}>
-                <ShoppingCartOutlined />
+                <FaShoppingCart size={'25px'} />
               </Link>
-            </Badge>
           </MenuItem>
           { user && <MenuItem>
             <div onClick={()=>setMenu(!dropdownMenu)}>
-              <HorizontalSplit/>
+              <SlMenu/>
             </div>
           </MenuItem>}
         </Right>

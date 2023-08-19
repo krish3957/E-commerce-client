@@ -1,7 +1,9 @@
-import { Email,  Instagram, Phone, Place } from '@material-ui/icons';
 import React from 'react';
 import styled from 'styled-components';
 import { mobile } from '../responsive';
+import { FaLocationDot,FaInstagram } from 'react-icons/fa6';
+import { BsFillTelephoneFill } from "react-icons/bs";
+import { AiTwotoneMail } from "react-icons/ai";
 
 const Container = styled.div`
     ${mobile({ width: "90vw",padding:"5vw",flexDirection:"Column",height:"auto"})};
@@ -82,7 +84,7 @@ function Footer() {
                 <Title>ShopDropGo</Title>
                 <Desc>Thank you for visiting our website! We strive to provide you with the best experience and information possible.</Desc>
                 <SocialIcons>
-                    <Icon><Instagram /></Icon>
+                    <Icon><FaInstagram size={'22px'} /></Icon>
                 </SocialIcons>
             </Left>
             <Center>
@@ -98,15 +100,15 @@ function Footer() {
             <Right>
                 <Title>Contact Us</Title>
                 <ContactList>
-                    <Place />
+                    <FaLocationDot />
                     <ContactItem>Bhuj, Kutch,Gujrat</ContactItem>
                 </ContactList>
                 <ContactList>
-                    <Phone />
+                    <BsFillTelephoneFill size={'22px'} />
                     <ContactItem>+1 9125844568</ContactItem>
                 </ContactList>
                 <ContactList>
-                    <Email />
+                    <AiTwotoneMail size={'22px'} />
                     <ContactItem>sev7n.in@gmail.com</ContactItem>
                 </ContactList>
             </Right>

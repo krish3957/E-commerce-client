@@ -1,4 +1,4 @@
-import { Send } from '@material-ui/icons';
+import { IoSendSharp } from "react-icons/io5";
 import React from 'react';
 import styled from 'styled-components';
 import { mobile } from '../responsive';
@@ -52,7 +52,7 @@ const NewsLetter = () => {
             </Desc>
             <InputContainer>
                 <Input placeholder='Enter Email'/>
-                <Button type='Submit'><Send/></Button>
+                <Button type='Submit'><IoSendSharp size={'22px'}/></Button>
             </InputContainer>
         </Container>
     );

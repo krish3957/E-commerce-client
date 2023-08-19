@@ -3,7 +3,8 @@ import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
-import { Add, Remove } from "@material-ui/icons";
+import { GrAdd } from "react-icons/gr";
+import { MdRemove } from "react-icons/md";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -217,9 +218,9 @@ const Product = () => {
                     </FilterContainer>
                     <AddContainer>
                         <AmountContainer>
-                            <Remove onClick={() => handleQuatity("desc")} />
+                            <MdRemove onClick={() => handleQuatity("desc")} />
                             <Amount>{quantity}</Amount>
-                            <Add onClick={() => handleQuatity("asc")} />
+                            <GrAdd onClick={() => handleQuatity("asc")} />
                         </AmountContainer>
                     </AddContainer>
                         <Button onClick={handleClick}>ADD TO CART</Button>
