@@ -8,11 +8,11 @@ import Navbar from '../components/Navbar';
 import { useSelector } from 'react-redux';
 import { mobile } from '../responsive';
 const Container = styled.div`
-    ${mobile({ width: "100vw",padding:0})};
+    ${mobile({ width: "100vw", padding: 0 })};
 `
 
 const Wrapper = styled.div`
-    ${mobile({ width: "100vw",padding:0})};
+    ${mobile({ width: "100vw", padding: 0 })};
     padding: 10vh 15vw 0 15vw;
     width: 70vw;
     height: 80vh;
@@ -26,7 +26,7 @@ const Form = styled.form`
 `
 
 const Row = styled.div`
-    ${mobile({ width: "80vw"})};
+    ${mobile({ width: "80vw" })};
     display: flex;
     width: 40vw;
     margin: 5vh;
@@ -34,7 +34,7 @@ const Row = styled.div`
 `
 
 const Button = styled.button`
-    ${mobile({ width: "70vw"})};
+    ${mobile({ width: "70vw" })};
 
     width:250px;
     padding:10px;
@@ -45,7 +45,7 @@ const Button = styled.button`
 `
 
 const Buttons = styled.div`
-    ${mobile({ width: "80vw",padding:0})};
+    ${mobile({ width: "80vw", padding: 0 })};
     width: 99%;
     margin: 10px;
     display: flex;
@@ -69,7 +69,7 @@ const Address = () => {
     const cart = useSelector(state => state.cart);
     const Razorpay = useRazorpay();
 
-    useEffect(()=>{
+    useEffect(() => {
 
         const handleAddress = () => {
             saveAddress({
@@ -82,10 +82,10 @@ const Address = () => {
             });
         }
         handleAddress();
-    },[add1,add2,city,state,country,zipcode])
+    }, [add1, add2, city, state, country, zipcode])
     const navigate = useNavigate();
     const handlePayment = useCallback(async () => {
-        
+
         var order = axios.post('https://e-commerce-api-psi.vercel.app/api/checkout/payment', {
             amount: cart.total * 100
 
@@ -103,10 +103,10 @@ const Address = () => {
             currency: "INR",
             name: "Sev7n",
             description: "Test Transaction",
-            image: "https://example.com/your_logo",
+            image: require("../Images/Asset1.jpg"),
             order_id: order.id,
             handler: function () {
-                navigate('/success',{ state: { address: address, orderId: order.id }});
+                navigate('/success', { state: { address: address, orderId: order.id } });
                 window.location.reload();
             },
             notes: {
@@ -167,7 +167,7 @@ const Address = () => {
                         </div>
                         <div className="inputbox">
                             <span>ZipCode</span>
-                            <input required="required" name='zipcode' onChange={(e) => {
+                            <input required name='zipcode' onChange={(e) => {
                                 saveZipCode(e.target.value);
                                 if (zipcode.length > 6) {
                                     alert('enter a valid ZipCode');
@@ -178,7 +178,14 @@ const Address = () => {
                     </Row>
                 </Form>
                 <Buttons>
-                    <Button onClick={handlePayment}>Checkout</Button>
+                    <Button onClick={() => {
+                        if (add1 === '' || add2 === '' || city === '' || state === '' || zipcode === '' || country === '') {
+                            alert('Save Valid address');
+                        }
+                        else {
+                            handlePayment();
+                        }
+                    }}>Checkout</Button>
                 </Buttons>
             </Wrapper>
         </Container>

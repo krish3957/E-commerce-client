@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { mobile } from '../responsive';
 
 const Container = styled.div`
-    ${mobile({ width: "80vw",maxWidth:"90vw" ,margin:"15px 0"})};
+    ${mobile({ width: "80vw",maxWidth:"90vw" ,margin:"15px 0 15px 3vh"})};
     flex:1;
     margin: 15px;
     position: relative;

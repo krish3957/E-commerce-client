@@ -10,6 +10,7 @@ import { mobile } from '../responsive';
 
 const Container = styled.div`
     ${mobile({ width: "100vw" })};
+
 `
 const Title = styled.h1`
     padding: 0;

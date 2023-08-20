@@ -5,7 +5,7 @@ import { mobile } from '../responsive';
 import axios from 'axios';
 
 const Container = styled.div`
-    ${mobile({ width: "94vw",padding:"0" ,marging:0})};
+    ${mobile({ width: "94vw",padding:"0" ,marging:0,alignItems:"center",justifyContent:"center"})};
     display: flex;
     width: calc(100vw-40px);
     justify-content: space-between;

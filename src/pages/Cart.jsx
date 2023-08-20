@@ -3,10 +3,11 @@ import Navbar from '../components/Navbar';
 import Announcement from '../components/Announcement';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
-import {  useSelector } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { mobile } from '../responsive';
-
+import { AiFillDelete } from "react-icons/ai";
+import { removeProduct } from '../redux/cartRedux';
 
 
 const Container = styled.div`
@@ -117,7 +118,8 @@ const ProductAmountContainer = styled.div`
 `
 
 const ProductAmount = styled.div`
-    margin-left: 10px;
+    ${mobile({ margin: "0"})};
+    margin: 0 20px 0 10px;
     width: 33%;
     height: 30px;
     display: flex;
@@ -175,7 +177,11 @@ const Button = styled.button`
 
 const Cart = () => {
     const cart = useSelector(state => state.cart);
-
+    const user = useSelector(state=>state.user).currentUser;
+    const dispatch = useDispatch();
+    const handleDelete = (product)=>{
+        dispatch(removeProduct(product));
+    }
     return (
         <Container>
             <Navbar />
@@ -187,7 +193,7 @@ const Cart = () => {
                     <TopTexts>
                         <TopText>SHOPPING BAG({cart.quantity})</TopText>
                     </TopTexts>
-                    <Link to={'/address'}><Button>Checkout Now</Button></Link>
+                    { user ? <Link to={ '/address'}><Button>Checkout Now</Button></Link> : <Link to={ '/login'}><Button>Checkout Now</Button></Link>}
                 </Top>
                 <Botttom>
                     <Info>
@@ -205,6 +211,7 @@ const Cart = () => {
                                 <PriceDetail>
                                     <ProductAmountContainer>
                                         <ProductAmount>Qty:{product.quantity}</ProductAmount>
+                                        <AiFillDelete size={'25px'} onClick={() => handleDelete(product)}/>
                                     </ProductAmountContainer>
                                     <ProductPrice>₹ {product.price}</ProductPrice>
                                 </PriceDetail>
@@ -230,7 +237,7 @@ const Cart = () => {
                             <SummaryItemText>SubTotal</SummaryItemText>
                             <SummaryItemPrice>₹{cart.total}</SummaryItemPrice>
                         </SummaryItem>
-                        <Link to={'/address'}><Button type='filled'>Checkout Now</Button></Link>
+                        { user ? <Link to={ '/address'}><Button>Checkout Now</Button></Link> : <Link to={ '/login'}><Button>Checkout Now</Button></Link>}
                     </Summary>
                 </Botttom>
             </Wrapper>
