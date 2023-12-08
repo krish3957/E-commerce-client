@@ -105,7 +105,7 @@ function Footer() {
                 </ContactList>
                 <ContactList>
                     <BsFillTelephoneFill size={'22px'} />
-                    <ContactItem>+1 9125844568</ContactItem>
+                    <ContactItem>+91 9687503343</ContactItem>
                 </ContactList>
                 <ContactList>
                     <AiTwotoneMail size={'22px'} />

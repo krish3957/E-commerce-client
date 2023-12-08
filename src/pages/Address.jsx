@@ -65,6 +65,7 @@ const Address = () => {
     const [state, saveState] = useState('');
     const [country, saveCountry] = useState('');
     const [zipcode, saveZipCode] = useState('');
+    const [phone, savePhone] = useState('');
 
     const cart = useSelector(state => state.cart);
     const Razorpay = useRazorpay();
@@ -78,11 +79,12 @@ const Address = () => {
                 City: city,
                 State: state,
                 Country: country,
-                ZipCode: zipcode
+                ZipCode: zipcode,
+                phone:phone
             });
         }
         handleAddress();
-    }, [add1, add2, city, state, country, zipcode])
+    }, [add1, add2, city, state, country, zipcode,phone])
     const navigate = useNavigate();
     const handlePayment = useCallback(async () => {
 
@@ -171,6 +173,18 @@ const Address = () => {
                                 saveZipCode(e.target.value);
                                 if (zipcode.length > 6) {
                                     alert('enter a valid ZipCode');
+                                }
+                            }} />
+                            <i />
+                        </div>
+                    </Row>
+                    <Row>
+                        <div className="inputbox">
+                            <span>ZipCode</span>
+                            <input required name='phone' onChange={(e) => {
+                                savePhone(e.target.value);
+                                if (zipcode.length != 6 ) {
+                                    alert('enter a valid Valid Phone Number');
                                 }
                             }} />
                             <i />

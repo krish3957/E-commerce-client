@@ -62,6 +62,7 @@ const Contact = () => {
                 </P>
                 <Br/>
                 <P>Address - Khana Chowk, Junavas, Madhapar, Kutch,Gujrat </P>
+                <P>Owned By-Raj Auto Center</P>
             </Content>
         </Container>
     );
