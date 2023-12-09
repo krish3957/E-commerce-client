@@ -61,7 +61,7 @@ const Contact = () => {
                     Dm Us On Instagram <Link to={'https://www.instagram.com/sev7n.in/'}>@Sev7n.in</Link>
                 </P>
                 <Br/>
-                <P>Address - Khana Chowk, Junavas, Madhapar, Kutch,Gujrat </P>
+                <P>Address - Opposite to New Bus Stand, Junavas, Madhapar, Kutch,Gujrat </P>
                 <P>Owned By-Raj Auto Center</P>
             </Content>
         </Container>

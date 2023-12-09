@@ -195,7 +195,7 @@ const Product = () => {
                     <Title>{product.title}</Title>
                     <Desc>{product.desc}</Desc>
                     <Price>₹{product.price}
-                        <CancelledPrice> ₹1799</CancelledPrice>
+                        <CancelledPrice> ₹1199</CancelledPrice>
                     </Price>
                     <FilterContainer>
                         <Filter>
