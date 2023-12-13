@@ -4,6 +4,7 @@ import { mobile } from '../responsive';
 import { FaLocationDot, FaInstagram } from 'react-icons/fa6';
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { AiTwotoneMail } from "react-icons/ai";
+import { Fade } from 'react-awesome-reveal';
 const Container = styled.div`
     ${mobile({ width: "90vw", padding: "5vw", flexDirection: "Column", height: "auto" })};
     display: flex;
@@ -80,14 +81,17 @@ function Footer() {
     return (
         <Container>
             <Left>
-                <Title>ShopDropGo</Title>
-                <Desc>Thank you for visiting our website! We strive to provide you with the best experience and information possible.</Desc>
-                <SocialIcons>
-                    <Icon><FaInstagram size={'22px'} /></Icon>
-                </SocialIcons>
+                <Fade direction="up" triggerOnce duration={200} >
+                    <Title>Sev7n.in</Title>
+                    <Desc>Thank you for visiting our website! We strive to provide you with the best experience and information possible.</Desc>
+                    <SocialIcons>
+                        <Icon><FaInstagram size={'22px'} /></Icon>
+                    </SocialIcons>
+                </Fade>
             </Left>
             <Center>
-                <ListTitle>Important Links</ListTitle>
+                <Fade direction="up" triggerOnce duration={200} >
+                    <ListTitle>Important Links</ListTitle>
                     <List>
                         <Items><Link href='/'>Home</Link></Items>
                         <Items><Link href='/policies/shipping-policy'>Shipping Policy</Link></Items>
@@ -95,8 +99,10 @@ function Footer() {
                         <Items><Link href='/policies/terms-of-service'>Terms and Condition</Link></Items>
                         <Items><Link href='/contact'>Contact Us</Link></Items>
                     </List>
+                </Fade>
             </Center>
             <Right>
+                <Fade direction="up" triggerOnce duration={200} >
                     <Title>Contact Us</Title>
                     <ContactList>
                         <FaLocationDot />
@@ -110,6 +116,7 @@ function Footer() {
                         <AiTwotoneMail size={'22px'} />
                         <ContactItem>sev7n.in@gmail.com</ContactItem>
                     </ContactList>
+                </Fade>
             </Right>
         </Container>
     );

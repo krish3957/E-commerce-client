@@ -9,6 +9,7 @@ import { mobile } from '../responsive';
 import { AiFillDelete } from "react-icons/ai";
 import { discoutTen, removeProduct } from '../redux/cartRedux';
 import { publicRequest } from '../requestMethod';
+import { Fade, JackInTheBox } from 'react-awesome-reveal';
 
 const Container = styled.div`
     ${mobile({ width: "100vw" })};
@@ -217,8 +218,10 @@ const Cart = () => {
 
     return (
         <Container>
-            <Navbar />
+        <Fade direction="up" triggerOnce>
             <Announcement />
+        </Fade>
+            <Navbar />
             <Wrapper>
                 <Title>Your Bag</Title>
                 <Top>
@@ -252,34 +255,36 @@ const Cart = () => {
                             </Product>
                         ))}
                     </Info>
-                    <Summary>
-                        <SummaryTitle>Order Summary</SummaryTitle>
-                        <SummaryItem>
-                            <SummaryItemText>SubTotal</SummaryItemText>
-                            <SummaryItemPrice>₹{cart.total}</SummaryItemPrice>
-                        </SummaryItem>
-                        <SummaryItem>
-                            <SummaryItemText>Shipping Charges</SummaryItemText>
-                            <SummaryItemPrice>₹100</SummaryItemPrice>
-                        </SummaryItem>
-                        <SummaryItem>
-                            <SummaryItemText>Shipping Charges Discount</SummaryItemText>
-                            <SummaryItemPrice>-₹100</SummaryItemPrice>
-                        </SummaryItem>
-                        <SummaryItem type="total">
-                            <SummaryItemText>SubTotal</SummaryItemText>
-                            <SummaryItemPrice>₹{cart.total}</SummaryItemPrice>
-                        </SummaryItem>
-                        <SummaryItem type="total">
-                            <SummaryItemText>Total</SummaryItemText>
-                            <SummaryItemPrice>₹{total}</SummaryItemPrice>
-                        </SummaryItem>
-                        <SummaryItem>
-                            <Input placeholder='Apply Coupon' onChange={(e) => setCoupon(e.target.value)} />
-                            <Apply onClick={handleCoupon}>Apply</Apply>
-                        </SummaryItem>
-                        {user ? <Link to={'/address'}><Button>Checkout Now</Button></Link> : <Link to={'/login'}><Button>Checkout Now</Button></Link>}
-                    </Summary>
+                    <JackInTheBox triggerOnce>
+                        <Summary>
+                            <SummaryTitle>Order Summary</SummaryTitle>
+                            <SummaryItem>
+                                <SummaryItemText>SubTotal</SummaryItemText>
+                                <SummaryItemPrice>₹{cart.total}</SummaryItemPrice>
+                            </SummaryItem>
+                            <SummaryItem>
+                                <SummaryItemText>Shipping Charges</SummaryItemText>
+                                <SummaryItemPrice>₹100</SummaryItemPrice>
+                            </SummaryItem>
+                            <SummaryItem>
+                                <SummaryItemText>Shipping Charges Discount</SummaryItemText>
+                                <SummaryItemPrice>-₹100</SummaryItemPrice>
+                            </SummaryItem>
+                            <SummaryItem type="total">
+                                <SummaryItemText>SubTotal</SummaryItemText>
+                                <SummaryItemPrice>₹{cart.total}</SummaryItemPrice>
+                            </SummaryItem>
+                            <SummaryItem type="total">
+                                <SummaryItemText>Total</SummaryItemText>
+                                <SummaryItemPrice>₹{total}</SummaryItemPrice>
+                            </SummaryItem>
+                            <SummaryItem>
+                                <Input placeholder='Apply Coupon' onChange={(e) => setCoupon(e.target.value)} />
+                                <Apply onClick={handleCoupon}>Apply</Apply>
+                            </SummaryItem>
+                            {user ? <Link to={'/address'}><Button>Checkout Now</Button></Link> : <Link to={'/login'}><Button>Checkout Now</Button></Link>}
+                        </Summary>
+                    </JackInTheBox>
                 </Botttom>
             </Wrapper>
             <Footer />

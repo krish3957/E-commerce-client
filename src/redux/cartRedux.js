@@ -31,6 +31,7 @@ const cartSlice = createSlice({
             state.quantity = 0;
             state.products = [];
             state.total = 0;
+            state.discount = false;
         },
         discoutTen: (state) => {
             state.discount = true;

@@ -12,7 +12,7 @@ const Container = styled.div`
   height:60px;
 `;
 const Wrapper = styled.div`
-  ${mobile({ width: "95vw" ,padding:0 })};
+  ${mobile({ width: "95vw", padding: 0 })};
   padding : 0 20px;
   display:flex;
   justify-content : space-between;
@@ -53,7 +53,7 @@ const Badge = styled.p`
 `
 
 const Logo = styled.img`
-  ${mobile({ paddingLeft:0 })};
+  ${mobile({ paddingLeft: 0 })};
   margin-top: 10px;
   width: 100px;
   height: 40px;
@@ -74,6 +74,7 @@ const Dropdown = styled.div`
   background-color: wheat;
   text-align: center;
   height: 2;
+  //Animated Dropdown
 
 `
 
@@ -87,10 +88,10 @@ const ListItem = styled.li`
 const Navbar = () => {
   const quantity = useSelector(state => state.cart.quantity);
   const user = useSelector(state => state.user.currentUser);
-  const [dropdownMenu,setMenu] = useState(false);
+  const [dropdownMenu, setMenu] = useState(false);
 
   const dispatch = useDispatch();
-  const handleLogout= () =>{
+  const handleLogout = () => {
     loggingOut(dispatch);
   }
 
@@ -105,7 +106,7 @@ const Navbar = () => {
           </SearchContainer> */}
         </Left>
         <Center>
-          <Link style={{ width: "100%", display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }} to={"/"}><Logo src='https://firebasestorage.googleapis.com/v0/b/shop-d7c5d.appspot.com/o/favicon.ico?alt=media&token=8310a99e-6813-4b40-beb0-d95bbd9bb9e7'/></Link>
+          <Link style={{ width: "100%", display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }} to={"/"}><Logo src='https://firebasestorage.googleapis.com/v0/b/shop-d7c5d.appspot.com/o/favicon.ico?alt=media&token=8310a99e-6813-4b40-beb0-d95bbd9bb9e7' /></Link>
         </Center>
         <Right>
           {!user ? <><MenuItem>
@@ -125,23 +126,24 @@ const Navbar = () => {
           }
           <MenuItem>
             <Badge>{quantity}</Badge>
-              <Link style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }} to={"/cart"}>
-                <FaShoppingCart size={'25px'} />
-              </Link>
+            <Link style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }} to={"/cart"}>
+              <FaShoppingCart size={'25px'} />
+            </Link>
           </MenuItem>
-          { user && <MenuItem>
-            <div onClick={()=>setMenu(!dropdownMenu)}>
-              <SlMenu/>
+          <MenuItem>
+            <div onClick={() => setMenu(!dropdownMenu)
+            }>
+              <SlMenu />
             </div>
-          </MenuItem>}
+          </MenuItem>
         </Right>
         {(user && dropdownMenu) && <Dropdown>
           <List>
-            <ListItem><Link style={{marginLeft:"-15%",textDecoration:'none',color:'black'}} to={"/"}>Home</Link></ListItem>
-            <ListItem><Link style={{marginLeft:"-15%",textDecoration:'none',color:'black'}} to={"/orders/" + user._id}>Orders</Link></ListItem>
-            <ListItem><Link style={{marginLeft:"-15%",textDecoration:'none',color:'black'}} onClick={handleLogout}>Logout</Link></ListItem>
+            <ListItem><Link style={{ marginLeft: "-15%", textDecoration: 'none', color: 'black' }} to={"/"}>Home</Link></ListItem>
+            <ListItem><Link style={{ marginLeft: "-15%", textDecoration: 'none', color: 'black' }} to={"/orders/" + user._id}>Orders</Link></ListItem>
+            <ListItem><Link style={{ marginLeft: "-15%", textDecoration: 'none', color: 'black' }} onClick={handleLogout}>Logout</Link></ListItem>
           </List>
-      </Dropdown>}
+        </Dropdown>}
       </Wrapper>
     </Container>
   )

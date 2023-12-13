@@ -47,15 +47,17 @@ const NewsLetter = () => {
             <Title>
                 Subscribe Now
             </Title>
-            <Desc>
-                So you don't miss the latest updates
-            </Desc>
+            <Fade direction="up" triggerOnce>
+                <Desc>
+                    So you don't miss the latest updates
+                </Desc>
+            </Fade>
             <form>
-                <Fade direction="up"  triggerOnce>
-                <InputContainer>
-                    <Input placeholder='Enter Email' />
-                    <Button type='Submit' ><IoSendSharp size={'22px'} /></Button>
-                </InputContainer>
+                <Fade direction="up" triggerOnce>
+                    <InputContainer>
+                        <Input placeholder='Enter Email' />
+                        <Button type='Submit' ><IoSendSharp size={'22px'} /></Button>
+                    </InputContainer>
                 </Fade>
             </form>
         </Container>

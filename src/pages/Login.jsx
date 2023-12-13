@@ -134,7 +134,7 @@ const Login = () => {
     }
 
     const signInGoogle = () => {
-
+        
         signInWithPopup(auth, provider)
             .then((result) => {
                 login(dispatch, { username: result.user.uid, password: result.user.uid });

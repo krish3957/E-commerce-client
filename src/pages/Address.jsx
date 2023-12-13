@@ -5,6 +5,7 @@ import axios from 'axios';
 import Navbar from '../components/Navbar';
 import { useSelector } from 'react-redux';
 import { mobile } from '../responsive';
+import { publicRequest, userRequest } from '../requestMethod';
 const location = window.location;
 const Container = styled.div`
     ${mobile({ width: "100vw", padding: 0 })};
@@ -34,7 +35,6 @@ const Row = styled.div`
 
 const Button = styled.button`
     ${mobile({ width: "70vw" })};
-
     width:250px;
     padding:10px;
     background-color: black;
@@ -94,7 +94,7 @@ const Address = () => {
     const handlePayment = useCallback(async () => {
 
         const TransactionId = 'T' + Date.now() + user.username;
-        axios.post('http://localhost:5000/api/phonepe/newPayment', {
+        axios.post('https://e-commerce-api-krish3957.vercel.app/api/phonepe/newPayment', {
             "name": "Krish",
             transactionId: 'T' + Date.now(),
             "MUID": "MUID" + Date.now(),
