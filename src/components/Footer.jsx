@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { mobile } from '../responsive';
-import { FaLocationDot,FaInstagram } from 'react-icons/fa6';
+import { FaLocationDot, FaInstagram } from 'react-icons/fa6';
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { AiTwotoneMail } from "react-icons/ai";
-
+import Fade from 'react-reveal/Fade';
 const Container = styled.div`
-    ${mobile({ width: "90vw",padding:"5vw",flexDirection:"Column",height:"auto"})};
+    ${mobile({ width: "90vw", padding: "5vw", flexDirection: "Column", height: "auto" })};
     display: flex;
     background-color: #ffdef2;
     height: 200px;
@@ -89,28 +89,32 @@ function Footer() {
             </Left>
             <Center>
                 <ListTitle>Important Links</ListTitle>
-                <List>
-                    <Items><Link href='/'>Home</Link></Items>
-                    <Items><Link href='/policies/shipping-policy'>Shipping Policy</Link></Items>
-                    <Items><Link href='/policies/privacy-policy'>Privacy Policy</Link></Items>
-                    <Items><Link href='/policies/terms-of-service'>Terms and Condition</Link></Items>
-                    <Items><Link href='/contact'>Contact Us</Link></Items>
-                </List>
+                <Fade bottom cascade>
+                    <List>
+                        <Items><Link href='/'>Home</Link></Items>
+                        <Items><Link href='/policies/shipping-policy'>Shipping Policy</Link></Items>
+                        <Items><Link href='/policies/privacy-policy'>Privacy Policy</Link></Items>
+                        <Items><Link href='/policies/terms-of-service'>Terms and Condition</Link></Items>
+                        <Items><Link href='/contact'>Contact Us</Link></Items>
+                    </List>
+                </Fade>
             </Center>
             <Right>
-                <Title>Contact Us</Title>
-                <ContactList>
-                    <FaLocationDot />
-                    <ContactItem>Bhuj, Kutch,Gujrat</ContactItem>
-                </ContactList>
-                <ContactList>
-                    <BsFillTelephoneFill size={'22px'} />
-                    <ContactItem>+91 9687503343</ContactItem>
-                </ContactList>
-                <ContactList>
-                    <AiTwotoneMail size={'22px'} />
-                    <ContactItem>sev7n.in@gmail.com</ContactItem>
-                </ContactList>
+                <Fade bottom cascade>
+                    <Title>Contact Us</Title>
+                    <ContactList>
+                        <FaLocationDot />
+                        <ContactItem>Bhuj, Kutch,Gujrat</ContactItem>
+                    </ContactList>
+                    <ContactList>
+                        <BsFillTelephoneFill size={'22px'} />
+                        <ContactItem>+91 9687503343</ContactItem>
+                    </ContactList>
+                    <ContactList>
+                        <AiTwotoneMail size={'22px'} />
+                        <ContactItem>sev7n.in@gmail.com</ContactItem>
+                    </ContactList>
+                </Fade>
             </Right>
         </Container>
     );

@@ -8,8 +8,12 @@ import { clearCart } from "../redux/cartRedux";
 const Success = () => {
   const location = useLocation();
   //in Cart.jsx I sent data and cart. Please check that page for the changes.(in video it's only data)
-  const data = location.state.address;
-  const orderId = location.state.orderId;
+  var data = localStorage.getItem('address');
+  data = JSON.parse(data);
+  console.log(data);
+  const orderId = localStorage.getItem('orderId');
+  localStorage.removeItem('address');
+  localStorage.removeItem('orderId');
   const currentUser = useSelector((state) => state.user.currentUser);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();

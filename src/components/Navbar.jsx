@@ -10,8 +10,6 @@ import { SlMenu } from 'react-icons/sl';
 const Container = styled.div`
   ${mobile({ width: "100vw" })};
   height:60px;
-  margin-top: -10px;
-  padding-bottom:10px;
 `;
 const Wrapper = styled.div`
   ${mobile({ width: "95vw" ,padding:0 })};
@@ -54,9 +52,11 @@ const Badge = styled.p`
   margin-bottom: -20px;
 `
 
-const Logo = styled.h1`
-  font-weight: bold;
+const Logo = styled.img`
   ${mobile({ paddingLeft:0 })};
+  margin-top: 10px;
+  width: 100px;
+  height: 40px;
 `
 
 const MenuItem = styled.div`
@@ -67,14 +67,13 @@ const MenuItem = styled.div`
 const Dropdown = styled.div`
   ${mobile({ width: "100vw" })};
   width: 20vw;
-  position: fixed;
-  z-index: 3;
+  position: absolute;
+  z-index: 4;
   right: 0;
-  top:80px;
+  top:100px;
   background-color: wheat;
   text-align: center;
-  height: 2
-  00px;
+  height: 2;
 
 `
 
@@ -106,7 +105,7 @@ const Navbar = () => {
           </SearchContainer> */}
         </Left>
         <Center>
-          <Link style={{ width: "100%", display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }} to={"/"}><Logo>SEV7N</Logo></Link>
+          <Link style={{ width: "100%", display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }} to={"/"}><Logo src='https://firebasestorage.googleapis.com/v0/b/shop-d7c5d.appspot.com/o/favicon.ico?alt=media&token=8310a99e-6813-4b40-beb0-d95bbd9bb9e7'/></Link>
         </Center>
         <Right>
           {!user ? <><MenuItem>
@@ -122,7 +121,7 @@ const Navbar = () => {
             </MenuItem>
           </>
             :
-            <MenuItem>Hello {user.username}</MenuItem>
+            <MenuItem>Hello {user.fname + ' ' + user.lname}</MenuItem>
           }
           <MenuItem>
             <Badge>{quantity}</Badge>
@@ -138,9 +137,9 @@ const Navbar = () => {
         </Right>
         {(user && dropdownMenu) && <Dropdown>
           <List>
-            <ListItem><Link style={{marginLeft:"-15%"}} to={"/"}>Home</Link></ListItem>
-            <ListItem><Link style={{marginLeft:"-15%"}} to={"/orders/" + user._id}>Orders</Link></ListItem>
-            <ListItem><Link style={{marginLeft:"-15%"}} onClick={handleLogout}>Logout</Link></ListItem>
+            <ListItem><Link style={{marginLeft:"-15%",textDecoration:'none',color:'black'}} to={"/"}>Home</Link></ListItem>
+            <ListItem><Link style={{marginLeft:"-15%",textDecoration:'none',color:'black'}} to={"/orders/" + user._id}>Orders</Link></ListItem>
+            <ListItem><Link style={{marginLeft:"-15%",textDecoration:'none',color:'black'}} onClick={handleLogout}>Logout</Link></ListItem>
           </List>
       </Dropdown>}
       </Wrapper>

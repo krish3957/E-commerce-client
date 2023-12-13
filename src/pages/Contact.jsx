@@ -43,7 +43,7 @@ const Br = styled.br`
 
 const Contact = () => {
     return (
-        <Container>
+        <Container className='revealOnScroll'>
             <Navbar />
             <Header>
                 <Title>Contact Us</Title>

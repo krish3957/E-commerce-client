@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Announcement from '../components/Announcement';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
-import {  useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { mobile } from '../responsive';
 import { AiFillDelete } from "react-icons/ai";
-import { removeProduct } from '../redux/cartRedux';
-
+import { discoutTen, removeProduct } from '../redux/cartRedux';
+import { publicRequest } from '../requestMethod';
+import Fade from 'react-reveal/Fade';
+import Flip from 'react-reveal/Flip';
 
 const Container = styled.div`
-    ${mobile({ width: "100vw"})};
+    ${mobile({ width: "100vw" })};
 `
 
 const Wrapper = styled.div`
@@ -26,7 +28,7 @@ const Title = styled.h1`
 
 const Top = styled.div`
     display: flex;
-    ${mobile({ flexDirection: "Column"})};
+    ${mobile({ flexDirection: "Column" })};
     justify-content: space-between;
     align-items: center;
 `
@@ -41,7 +43,7 @@ const TopButton = styled.button`
 
 const Botttom = styled.div`
     display: flex;
-    ${mobile({ flexDirection: "Column"})};
+    ${mobile({ flexDirection: "Column" })};
     width: 100%;
     justify-content: space-between;
     margin-top: 20px;
@@ -65,7 +67,7 @@ const Info = styled.div`
 
 
 const Product = styled.div`
-    ${mobile({ flexDirection: "Column"})};
+    ${mobile({ flexDirection: "Column" })};
     display: flex;
     margin: 20px 0;
 `
@@ -73,7 +75,7 @@ const Product = styled.div`
 const ProductDetail = styled.div`
     flex: 1.5;
     display: flex;
-    ${mobile({ flexDirection: "Column"})};
+    ${mobile({ flexDirection: "Column" })};
 `
 
 const PriceDetail = styled.div`
@@ -92,13 +94,13 @@ const ProductColor = styled.div`
 `
 
 const Image = styled.img`
-    ${mobile({ width: "90vw",height:"80vh"})};
+    ${mobile({ width: "90vw", height: "80vh" })};
     width: 200px;
     height: 200px;
 `
 
 const Details = styled.div`
-    ${mobile({ padding: "15px 0"})};
+    ${mobile({ padding: "15px 0" })};
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -118,7 +120,7 @@ const ProductAmountContainer = styled.div`
 `
 
 const ProductAmount = styled.div`
-    ${mobile({ margin: "0"})};
+    ${mobile({ margin: "0" })};
     margin: 0 20px 0 10px;
     width: 33%;
     height: 30px;
@@ -166,26 +168,61 @@ const SummaryItemText = styled.div``
 const SummaryItemPrice = styled.span``
 
 const Button = styled.button`
-    ${mobile({ width: "60vw"})};
+    ${mobile({ width: "60vw" })};
     padding: 5px;
     font-size: 22px;
     font-weight: 500;
     width: 400px;
-    background-color: ${props=>props.type === "filled" ? "black" : "gray"};
+    background-color: ${props => props.type === "filled" ? "black" : "gray"};
     color: #fff;
 `
+const Input = styled.input`
+    width: 80%;
+    padding: 10px;
+`
+
+const Apply = styled.button`
+    width: 20%;
+    color: #fff ;
+    font-size: 18px;
+    background-color: black;
+`
+
 
 const Cart = () => {
     const cart = useSelector(state => state.cart);
-    const user = useSelector(state=>state.user).currentUser;
+    const user = useSelector(state => state.user).currentUser;
+    const userorder = publicRequest.get(`/orders/${user._id}`);
     const dispatch = useDispatch();
-    const handleDelete = (product)=>{
+    const [total,setTotal] = useState(cart.total);
+    const handleDelete = (product) => {
         dispatch(removeProduct(product));
     }
+    const [coupon, setCoupon] = useState('');
+    const [couponeffect, setCouponeffect] = useState(false);
+    const handleCoupon = (e) => {
+        e.preventDefault();
+        if (coupon !== 'THALA') {
+            alert('Enter a valid coupon');
+        }
+        else {
+            if (couponeffect) {
+                alert('Coupon already applied');
+            }
+            else {
+                setCouponeffect(true);
+                dispatch(discoutTen());
+                setTotal(cart.total - (cart.total * 0.1));
+            }
+        }
+    }
+
     return (
         <Container>
             <Navbar />
-            <Announcement />
+            <Fade left>
+                <Announcement />
+            </Fade>
             <Wrapper>
                 <Title>Your Bag</Title>
                 <Top>
@@ -193,11 +230,11 @@ const Cart = () => {
                     <TopTexts>
                         <TopText>SHOPPING BAG({cart.quantity})</TopText>
                     </TopTexts>
-                    { user ? <Link to={ '/address'}><Button>Checkout Now</Button></Link> : <Link to={ '/login'}><Button>Checkout Now</Button></Link>}
+                    {user ? <Link to={'/address'}><Button>Checkout Now</Button></Link> : <Link to={'/login'}><Button>Checkout Now</Button></Link>}
                 </Top>
                 <Botttom>
                     <Info>
-                        {cart.products.map((product,index) => (
+                        {cart.products.map((product, index) => (
                             <Product key={index}>
                                 <ProductDetail>
                                     <Image src={product.img} />
@@ -211,7 +248,7 @@ const Cart = () => {
                                 <PriceDetail>
                                     <ProductAmountContainer>
                                         <ProductAmount>Qty:{product.quantity}</ProductAmount>
-                                        <AiFillDelete size={'25px'} onClick={() => handleDelete(product)}/>
+                                        <AiFillDelete size={'25px'} onClick={() => handleDelete(product)} />
                                     </ProductAmountContainer>
                                     <ProductPrice>₹ {product.price}</ProductPrice>
                                 </PriceDetail>
@@ -219,26 +256,36 @@ const Cart = () => {
                             </Product>
                         ))}
                     </Info>
-                    <Summary>
-                        <SummaryTitle>Order Summary</SummaryTitle>
-                        <SummaryItem>
-                            <SummaryItemText>SubTotal</SummaryItemText>
-                            <SummaryItemPrice>₹{cart.total}</SummaryItemPrice>
-                        </SummaryItem>
-                        <SummaryItem>
-                            <SummaryItemText>Shipping Charges</SummaryItemText>
-                            <SummaryItemPrice>₹100</SummaryItemPrice>
-                        </SummaryItem>
-                        <SummaryItem>
-                            <SummaryItemText>Shipping Charges Discount</SummaryItemText>
-                            <SummaryItemPrice>-₹100</SummaryItemPrice>
-                        </SummaryItem>
-                        <SummaryItem type="total">
-                            <SummaryItemText>SubTotal</SummaryItemText>
-                            <SummaryItemPrice>₹{cart.total}</SummaryItemPrice>
-                        </SummaryItem>
-                        { user ? <Link to={ '/address'}><Button>Checkout Now</Button></Link> : <Link to={ '/login'}><Button>Checkout Now</Button></Link>}
-                    </Summary>
+                    <Flip right>
+                        <Summary>
+                            <SummaryTitle>Order Summary</SummaryTitle>
+                            <SummaryItem>
+                                <SummaryItemText>SubTotal</SummaryItemText>
+                                <SummaryItemPrice>₹{cart.total}</SummaryItemPrice>
+                            </SummaryItem>
+                            <SummaryItem>
+                                <SummaryItemText>Shipping Charges</SummaryItemText>
+                                <SummaryItemPrice>₹100</SummaryItemPrice>
+                            </SummaryItem>
+                            <SummaryItem>
+                                <SummaryItemText>Shipping Charges Discount</SummaryItemText>
+                                <SummaryItemPrice>-₹100</SummaryItemPrice>
+                            </SummaryItem>
+                            <SummaryItem type="total">
+                                <SummaryItemText>SubTotal</SummaryItemText>
+                                <SummaryItemPrice>₹{cart.total}</SummaryItemPrice>
+                            </SummaryItem>
+                            <SummaryItem type="total">
+                                <SummaryItemText>Total</SummaryItemText>
+                                <SummaryItemPrice>₹{total}</SummaryItemPrice>
+                            </SummaryItem>
+                            <SummaryItem>
+                                <Input placeholder='Apply Coupon' onChange={(e) => setCoupon(e.target.value)} />
+                                <Apply onClick={handleCoupon}>Apply</Apply>
+                            </SummaryItem>
+                            {user ? <Link to={'/address'}><Button>Checkout Now</Button></Link> : <Link to={'/login'}><Button>Checkout Now</Button></Link>}
+                        </Summary>
+                    </Flip>
                 </Botttom>
             </Wrapper>
             <Footer />

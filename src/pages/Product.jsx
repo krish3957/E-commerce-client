@@ -138,15 +138,17 @@ const Button = styled.button`
         background-color: lightpink;
     }
 `
+const Added = styled.div`
+    color: red;
+`
 
 const Product = () => {
     const [quantity, setQuantity] = useState(1);
     const [size, setSize] = useState(null);
     const [color, setColor] = useState(null);
-
     const location = useLocation();
     const id = location.pathname.split("/")[2];
-
+    const [added, setAdded] = useState(false);
     const [product, setProduct] = useState({});
     const dispatch = useDispatch();
 
@@ -155,13 +157,14 @@ const Product = () => {
             try {
                 const res = await axios.get("https://e-commerce-api-psi.vercel.app/api/products/find/" + id);
                 setProduct(res.data);
+                setColor(res.data.color[0]);
             }
             catch (err) {
             }
         }
         getProduct(); 
     },
-        [id]);
+        [id]);        
 
     const handleQuatity = (type) => {
         if (type === "asc") {
@@ -179,7 +182,11 @@ const Product = () => {
             alert('Please Select A Color');
         }
         else{
-            dispatch(addProduct({ ...product, size,color,quantity}));            
+            dispatch(addProduct({ ...product, size,color,quantity})); 
+            setAdded(true);
+            setTimeout(() => {
+                setAdded(false);
+            }, 2000);         
         }
     }
 
@@ -224,6 +231,7 @@ const Product = () => {
                         </AmountContainer>
                     </AddContainer>
                         <Button onClick={handleClick}>ADD TO CART</Button>
+                        {added && <Added> Item Added! </Added>}
                 </InfoContainer>
             </Wrapper>
             <NewsLetter />

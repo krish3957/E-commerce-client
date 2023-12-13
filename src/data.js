@@ -2,7 +2,7 @@
 export  const SliderItems = [
     {
         id:1,
-        img: require('./Images/TK2L6939-removebg-preview.png'),
+        img: require('./Images/ImageMain.jpg'),
         title:"Welcome to SEV7N",
         desc:"Discover Your Perfect Graphic T-shirts Here",
         bg:"ffddef"   
