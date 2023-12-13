@@ -2,8 +2,7 @@ import { IoSendSharp } from "react-icons/io5";
 import React from 'react';
 import styled from 'styled-components';
 import { mobile } from '../responsive';
-import Fade from 'react-reveal/Fade';
-
+import { Fade } from "react-awesome-reveal";
 const Container = styled.div`
     ${mobile({ width: "94vw", padding: "0 3vw" })};
     display: flex;
@@ -45,21 +44,19 @@ const Button = styled.button`
 const NewsLetter = () => {
     return (
         <Container>
-            <Fade right>
-                <Title>
-                    Subscribe Now
-                </Title>
-            </Fade>
-            <Fade bottom>
-                <Desc>
-                    So you don't miss the latest updates
-                </Desc>
-            </Fade>
+            <Title>
+                Subscribe Now
+            </Title>
+            <Desc>
+                So you don't miss the latest updates
+            </Desc>
             <form>
+                <Fade direction="up"  triggerOnce>
                 <InputContainer>
                     <Input placeholder='Enter Email' />
                     <Button type='Submit' ><IoSendSharp size={'22px'} /></Button>
                 </InputContainer>
+                </Fade>
             </form>
         </Container>
     );

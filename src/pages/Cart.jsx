@@ -9,8 +9,6 @@ import { mobile } from '../responsive';
 import { AiFillDelete } from "react-icons/ai";
 import { discoutTen, removeProduct } from '../redux/cartRedux';
 import { publicRequest } from '../requestMethod';
-import Fade from 'react-reveal/Fade';
-import Flip from 'react-reveal/Flip';
 
 const Container = styled.div`
     ${mobile({ width: "100vw" })};
@@ -194,7 +192,7 @@ const Cart = () => {
     const user = useSelector(state => state.user).currentUser;
     const userorder = publicRequest.get(`/orders/${user._id}`);
     const dispatch = useDispatch();
-    const [total,setTotal] = useState(cart.total);
+    const [total, setTotal] = useState(cart.total);
     const handleDelete = (product) => {
         dispatch(removeProduct(product));
     }
@@ -220,9 +218,7 @@ const Cart = () => {
     return (
         <Container>
             <Navbar />
-            <Fade left>
-                <Announcement />
-            </Fade>
+            <Announcement />
             <Wrapper>
                 <Title>Your Bag</Title>
                 <Top>
@@ -256,36 +252,34 @@ const Cart = () => {
                             </Product>
                         ))}
                     </Info>
-                    <Flip right>
-                        <Summary>
-                            <SummaryTitle>Order Summary</SummaryTitle>
-                            <SummaryItem>
-                                <SummaryItemText>SubTotal</SummaryItemText>
-                                <SummaryItemPrice>₹{cart.total}</SummaryItemPrice>
-                            </SummaryItem>
-                            <SummaryItem>
-                                <SummaryItemText>Shipping Charges</SummaryItemText>
-                                <SummaryItemPrice>₹100</SummaryItemPrice>
-                            </SummaryItem>
-                            <SummaryItem>
-                                <SummaryItemText>Shipping Charges Discount</SummaryItemText>
-                                <SummaryItemPrice>-₹100</SummaryItemPrice>
-                            </SummaryItem>
-                            <SummaryItem type="total">
-                                <SummaryItemText>SubTotal</SummaryItemText>
-                                <SummaryItemPrice>₹{cart.total}</SummaryItemPrice>
-                            </SummaryItem>
-                            <SummaryItem type="total">
-                                <SummaryItemText>Total</SummaryItemText>
-                                <SummaryItemPrice>₹{total}</SummaryItemPrice>
-                            </SummaryItem>
-                            <SummaryItem>
-                                <Input placeholder='Apply Coupon' onChange={(e) => setCoupon(e.target.value)} />
-                                <Apply onClick={handleCoupon}>Apply</Apply>
-                            </SummaryItem>
-                            {user ? <Link to={'/address'}><Button>Checkout Now</Button></Link> : <Link to={'/login'}><Button>Checkout Now</Button></Link>}
-                        </Summary>
-                    </Flip>
+                    <Summary>
+                        <SummaryTitle>Order Summary</SummaryTitle>
+                        <SummaryItem>
+                            <SummaryItemText>SubTotal</SummaryItemText>
+                            <SummaryItemPrice>₹{cart.total}</SummaryItemPrice>
+                        </SummaryItem>
+                        <SummaryItem>
+                            <SummaryItemText>Shipping Charges</SummaryItemText>
+                            <SummaryItemPrice>₹100</SummaryItemPrice>
+                        </SummaryItem>
+                        <SummaryItem>
+                            <SummaryItemText>Shipping Charges Discount</SummaryItemText>
+                            <SummaryItemPrice>-₹100</SummaryItemPrice>
+                        </SummaryItem>
+                        <SummaryItem type="total">
+                            <SummaryItemText>SubTotal</SummaryItemText>
+                            <SummaryItemPrice>₹{cart.total}</SummaryItemPrice>
+                        </SummaryItem>
+                        <SummaryItem type="total">
+                            <SummaryItemText>Total</SummaryItemText>
+                            <SummaryItemPrice>₹{total}</SummaryItemPrice>
+                        </SummaryItem>
+                        <SummaryItem>
+                            <Input placeholder='Apply Coupon' onChange={(e) => setCoupon(e.target.value)} />
+                            <Apply onClick={handleCoupon}>Apply</Apply>
+                        </SummaryItem>
+                        {user ? <Link to={'/address'}><Button>Checkout Now</Button></Link> : <Link to={'/login'}><Button>Checkout Now</Button></Link>}
+                    </Summary>
                 </Botttom>
             </Wrapper>
             <Footer />

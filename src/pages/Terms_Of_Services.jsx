@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Navbar from '../components/Navbar';
 import { mobile } from '../responsive';
-import Fade from 'react-reveal/Fade';
 
 const Container = styled.div`
     width: 98vw;
@@ -79,9 +78,7 @@ const TermsOfServices = () => {
                 <br />
                 <strong>SECTION 3 - ACCURACY, COMPLETENESS, AND TIMELINESS OF INFORMATION</strong>
                 <br />
-                <Fade bottom>
                     <P> We are not responsible if information made available on this site is not accurate, complete, or current. The material on this site is provided for general information only and should not be relied upon or used as the sole basis for making decisions without consulting primary, more accurate, more complete, or more timely sources of information. Any reliance on the material on this site is at your own risk. </P>
-                </Fade>
                 <br />
                 <P> This site may contain certain historical information. Historical information, necessarily, is not current and is provided for your reference only. We reserve the right to modify the contents of this site at any time, but we have no obligation to update any information on our site. You agree that it is your responsibility to monitor changes to our site. </P>
                 <br />
