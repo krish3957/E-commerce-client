@@ -94,7 +94,7 @@ const Address = () => {
     const handlePayment = useCallback(async () => {
 
         const TransactionId = 'T' + Date.now() + user.username;
-        axios.post('https://e-commerce-api-krish3957.vercel.app/api/phonepe/newPayment', {
+        axios.post('https://e-commerce-api-psi.vercel.app/api/phonepe/newPayment', {
             "name": "Krish",
             transactionId: 'T' + Date.now(),
             "MUID": "MUID" + Date.now(),
