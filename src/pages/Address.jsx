@@ -59,6 +59,8 @@ const Span = styled.span`
 
 
 const Address = () => {
+
+
     const [address, saveAddress] = useState({});
     const user = useSelector(state => state.user.currentUser);
     const [add1, saveAdd1] = useState('');
@@ -90,59 +92,25 @@ const Address = () => {
     }, [add1, add2, city, state, country, zipcode, phone])
 
     const handlePayment = useCallback(async () => {
+
         const TransactionId = 'T' + Date.now() + user.username;
-        axios.post("https://e-commerce-api-psi.vercel.app/api/phonepe/newPay",{
-                "name": "Krish",
-                transactionId: TransactionId,
-                "MUID": "MUID" + Date.now(),
-                "amount": cart.total - (cart.total * 0.1 * dis),
-            }).then((response) => {
-                console.log(response.data.checksum);
-                console.log(response.data.payload);
-                const prod_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay"
-                const options = {
-                    method: 'POST',
-                    url: prod_URL,
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        accept: 'application/json',
-                        'Content-Type': 'application/json',
-                        'X-VERIFY': response.data.checksum
-                    },
-                    data: {
-                        request: response.data.payload
-                    }
-                };
-        
-                axios.request(options).then(function (response) {
-                    console.log(response.data);
-                    // localStorage.setItem('address', JSON.stringify(address));
-                    // localStorage.setItem('orderId', TransactionId);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        });
-        // const TransactionId = 'T' + Date.now() + user.username;
-        // axios.post('https://e-commerce-api-psi.vercel.app/api/phonepe/newPayment', {
-        //     "name": "Krish",
-        //     transactionId: TransactionId,
-        //     "MUID": "MUID" + Date.now(),
-        //     "amount": cart.total - (cart.total * 0.1 * dis),
-        // }).then((response) => {
-        //     console.log(response.data);
-        //     location.replace(response.data.redirectInfo.url);
-        //     localStorage.setItem('address', JSON.stringify(address));
-        //     localStorage.setItem('orderId', TransactionId);
-        //     // navigate('/success', { state: { address: address, orderId: response.data.transactionId } });
-        // })
-        //     .catch((error) => {
-        //         console.log('error');
-        //         // console.log(error);
-        //         // console.error(error);
-        //     });
+        axios.post('https://e-commerce-api-psi.vercel.app/api/phonepe/newPayment', {
+            "name": "Krish",
+            transactionId: 'T' + Date.now(),
+            "MUID": "MUID" + Date.now(),
+            "amount": cart.total - dis - (cart.total * 0.1 * dis),
+        }).then((response) => {
+            location.replace(response.data.redirectInfo.url);
+            localStorage.setItem('address', JSON.stringify(address));
+            localStorage.setItem('orderId', TransactionId);
+        })
+            .catch((error) => {
+                console.log('error');
+                // console.log(error);
+                // console.error(error);
+            });
     }, [cart, dis,address,user])
-    
+
 
     return (
         <Container>
