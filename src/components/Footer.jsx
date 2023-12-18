@@ -6,9 +6,15 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { AiTwotoneMail } from "react-icons/ai";
 import { Fade } from 'react-awesome-reveal';
 const Container = styled.div`
+    /* font-family: "Goudy Bookletter 1911", sans-serif;*/
+    font-family: 'Preahvihear', sans-serif;
+font-family: 'Urbanist', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
     ${mobile({ width: "90vw", padding: "5vw", flexDirection: "Column", height: "auto" })};
     display: flex;
-    background-color: #ffdef2;
+    background-color: rgba(40,49,66,255);
+    color: #fff;
     height: 200px;
     padding: 20px;
 `
@@ -18,7 +24,7 @@ const Left = styled.div`
     display: flex;
     flex-direction: column;
     padding: 20px;
-    font-size: 16px;
+    font-size: 18px;
 `
 const Center = styled.div`
     flex: 1;
@@ -31,6 +37,7 @@ const Right = styled.div`
 
 const Desc = styled.div`
     flex:1;
+    
 `
 
 const SocialIcons = styled.div`
@@ -71,7 +78,7 @@ const ContactItem = styled.div`
     margin-left: 10px;
 `
 const Link = styled.a`
-    color: black;
+    color: white;
     font-size: 18px;
     font-weight: 400;
     text-decoration: none;
@@ -85,7 +92,7 @@ function Footer() {
                     <Title>Sev7n.in</Title>
                     <Desc>Thank you for visiting our website! We strive to provide you with the best experience and information possible.</Desc>
                     <SocialIcons>
-                        <Icon><FaInstagram size={'22px'} /></Icon>
+                        <Link href='https://www.instagram.com/sev7n.in/' target='_blank'><Icon><FaInstagram size={'22px'} /></Icon></Link>
                     </SocialIcons>
                 </Fade>
             </Left>

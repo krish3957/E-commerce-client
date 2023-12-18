@@ -70,10 +70,12 @@ const Icon = styled.div`
 `
 
 const Product = ({ item }) => {
+    const [hovered, setHovered] = React.useState(false);
+
     return (
-        <Container>
+        <Container onMouseOver={()=> setHovered(true)} onMouseOut={()=> setHovered(false)}>
             <Circle />
-            <Image src={item.img} />
+                {hovered ? <Image src={item.extraImg[1]}/> : <Image src={item.extraImg[0]} />}
             <Info>
                
                 <Icon>

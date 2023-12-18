@@ -11,33 +11,57 @@ import axios from "axios";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
 import { mobile } from "../responsive";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const Container = styled.div`
+    height: auto;
     width: 100%;
-    ${mobile({ width: "100vw",height:"auto"})};
+    ${mobile({ width: "100vw", height: "auto" })};
 `
 const Wrapper = styled.div`
-    ${mobile({ width: "100vw",height:"auto",padding:0})};
+    ${mobile({ width: "100vw", height: "auto", padding: 0 })};
     padding: 40px;
+    height: fit-content;
     display: flex;
-    ${mobile({ flexDirection:"Column"})};
-    height: 100vh;
+    ${mobile({ flexDirection: "Column" })};
+
 
 `
 const ImageContainer = styled.div`
-    ${mobile({ width: "100vw",height:"auto",padding:"15px 0"})};
+    ${mobile({
+    width: "100vw", flexDirection: 'row', overflow: 'hidden', height: "auto", padding: "15px 0",
+})};
+    height: 100vh;
+    width: 50vw;
     display: flex;
-    justify-content: center;
+    flex-direction:column;
+    justify-content: space-between;
     flex: 1;
 `
 const Image = styled.img`
-    ${mobile({ width: "90%"})};
-    width: 80%;
-    height: 100%;
+    ${mobile({ width: "90%",height:'80vh', padding: "0 5%" })};
+    padding: 0 5vw 0 2vw;
+    width: 35vw;
+    height: 100vh;
+`
+
+const Circle = styled.div`
+    ${mobile({right:'0vw'})}
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    height: 30px;
+    top:45vh;
+    left:${props => props.pos === 'left' && '0vw'};
+    right: ${props => props.pos === 'right' && '55vw'};
+    width: 30px;
+    background-color: white;
+    border-radius:50% ;
+    position:absolute;
 `
 const InfoContainer = styled.div`
     flex: 1;
-    ${mobile({ padding: "0 15px"})};   
+    ${mobile({ padding: "0 15px" })};   
 `
 const Title = styled.h1`
     font-size: 45px;
@@ -61,7 +85,7 @@ const Desc = styled.div`
 `
 
 const FilterContainer = styled.div`
-    ${mobile({ width: "90vw"})};
+    ${mobile({ width: "90vw" })};
     width: 500px;
     margin: 40px 0;
     display: flex;
@@ -128,7 +152,7 @@ const AmountContainer = styled.div`
 `
 
 const Button = styled.button`
-    ${mobile({ marginTop:"1vh",padding: "2vh 5vw"})};
+    ${mobile({ marginTop: "1vh", padding: "2vh 5vw" })};
     padding: 15px;
     border: 2px solid teal;
     border-radius: 5px;
@@ -150,6 +174,7 @@ const Product = () => {
     const id = location.pathname.split("/")[2];
     const [added, setAdded] = useState(false);
     const [product, setProduct] = useState({});
+    const [slideIndex, setSlideIndex] = useState(0);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -162,9 +187,9 @@ const Product = () => {
             catch (err) {
             }
         }
-        getProduct(); 
+        getProduct();
     },
-        [id]);        
+        [id]);
 
     const handleQuatity = (type) => {
         if (type === "asc") {
@@ -175,18 +200,18 @@ const Product = () => {
     }
 
     const handleClick = () => {
-        if(size===null){
+        if (size === null) {
             alert('Please Select A Size');
         }
-        else if(color === null){
+        else if (color === null) {
             alert('Please Select A Color');
         }
-        else{
-            dispatch(addProduct({ ...product, size,color,quantity})); 
+        else {
+            dispatch(addProduct({ ...product, size, color, quantity }));
             setAdded(true);
             setTimeout(() => {
                 setAdded(false);
-            }, 2000);         
+            }, 2000);
         }
     }
 
@@ -195,8 +220,16 @@ const Product = () => {
             <Navbar />
             <Announcement />
             <Wrapper>
-                <ImageContainer>
-                    <Image src={product.img} />
+                <ImageContainer slideIndex={slideIndex}>
+                    <Circle pos='left' onClick={() => {setSlideIndex((prev) => prev > 0 ? prev - 1 : product.extraImg?.length - 1);}}>
+                        <FaArrowLeft />
+                    </Circle>
+                    {product.extraImg?.filter((item, index) => 
+                        slideIndex === index
+                    ).map(item1 => <Image src={item1}></Image>)}
+                    <Circle pos='right' onClick={() => setSlideIndex((prev) => prev < product.extraImg?.length -1 ? prev + 1 : 0)}>
+                        <FaArrowRight />
+                    </Circle>
                 </ImageContainer>
                 <InfoContainer>
                     <Title>{product.title}</Title>
@@ -208,7 +241,7 @@ const Product = () => {
                         <Filter>
                             <FilterTitle>Color:</FilterTitle>
                             <Colors>
-                                {product.color?.map((c,index) => (
+                                {product.color?.map((c, index) => (
                                     <FilterColors key={index} color={c} onClick={() => setColor(c)} />
                                 ))}
                             </Colors>
@@ -217,7 +250,7 @@ const Product = () => {
                             <FilterTitle>Size:</FilterTitle>
                             <Select defaultValue={"Size"} onChange={(e) => setSize(e.target.value)}>
                                 <Option disabled>Size</Option>
-                                {product.size?.map((s,index) => (
+                                {product.size?.map((s, index) => (
                                     <Option key={index}>{s}</Option>
                                 ))}
                             </Select>
@@ -230,8 +263,8 @@ const Product = () => {
                             <GrAdd onClick={() => handleQuatity("asc")} />
                         </AmountContainer>
                     </AddContainer>
-                        <Button onClick={handleClick}>ADD TO CART</Button>
-                        {added && <Added> Item Added! </Added>}
+                    <Button onClick={handleClick}>ADD TO CART</Button>
+                    {added && <Added> Item Added! </Added>}
                 </InfoContainer>
             </Wrapper>
             <NewsLetter />
