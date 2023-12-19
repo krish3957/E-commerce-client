@@ -106,7 +106,7 @@ const Navbar = () => {
           </SearchContainer> */}
         </Left>
         <Center>
-          <Link style={{ width: "100%", display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }} to={"/"}><Logo src='https://firebasestorage.googleapis.com/v0/b/shop-d7c5d.appspot.com/o/favicon.ico?alt=media&token=8310a99e-6813-4b40-beb0-d95bbd9bb9e7' /></Link>
+          <Link style={{ width: "100%", display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }} to={"/"}><Logo src='https://firebasestorage.googleapis.com/v0/b/shop-d7c5d.appspot.com/o/output_image.jpeg?alt=media&token=04079026-795d-4978-b602-cc9700cce279' /></Link>
         </Center>
         <Right>
           {!user ? <><MenuItem>

@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 `
 const ImageContainer = styled.div`
     ${mobile({
-    width: "100vw", flexDirection: 'row', overflow: 'hidden', height: "auto", padding: "15px 0",
+    width: "100vw", flexDirection: 'row', overflow: 'hidden', height: "400px", padding: "15px 0",
 })};
     height: 100vh;
     width: 50vw;
@@ -39,7 +39,7 @@ const ImageContainer = styled.div`
     flex: 1;
 `
 const Image = styled.img`
-    ${mobile({ width: "90%",height:'80vh', padding: "0 5%" })};
+    ${mobile({ width: "90%",height:'450px', padding: "0 5%" })};
     padding: 0 5vw 0 2vw;
     width: 35vw;
     height: 100vh;
