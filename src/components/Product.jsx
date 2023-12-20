@@ -76,7 +76,7 @@ const Product = ({ item }) => {
         <Container onMouseOver={()=> setHovered(true)} onMouseOut={()=> setHovered(false)}>
             <Circle />
                 {hovered ? <Image src={item.extraImg[1]}/> : <Image src={item.extraImg[0]} />}
-                <Link to={`/product/${item._id}`}>{item.title}</Link>
+                <Link style={{textDecoration:'none',color:'black',fontWeight:'700'}} to={`/product/${item._id}`}>{item.title}</Link>
             <Info>
                
                 <Icon>
