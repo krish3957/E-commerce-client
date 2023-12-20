@@ -98,7 +98,7 @@ const Address = () => {
             "name": "Krish",
             transactionId: 'T' + Date.now(),
             "MUID": "MUID" + Date.now(),
-            "amount": cart.total - dis - (cart.total * 0.1 * dis),
+            "amount": cart.total,
         }).then((response) => {
             location.replace(response.data.redirectInfo.url);
             localStorage.setItem('address', JSON.stringify(address));
