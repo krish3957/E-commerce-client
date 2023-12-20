@@ -191,9 +191,7 @@ const Apply = styled.button`
 const Cart = () => {
     const cart = useSelector(state => state.cart);
     const user = useSelector(state => state.user).currentUser;
-    const userorder = publicRequest.get(`/orders/${user._id}`);
     const dispatch = useDispatch();
-    const [total, setTotal] = useState(cart.total);
     const handleDelete = (product) => {
         dispatch(removeProduct(product));
     }
@@ -211,7 +209,6 @@ const Cart = () => {
             else {
                 setCouponeffect(true);
                 dispatch(discoutTen());
-                setTotal(cart.total - (cart.total * 0.1));
             }
         }
     }

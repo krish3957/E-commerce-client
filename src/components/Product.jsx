@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { mobile } from '../responsive';
 
 const Container = styled.div`
-    ${mobile({ width: "80vw",maxWidth:"90vw",height:'450px' ,margin:"15px 0 15px 3vh"})};
+    ${mobile({ width: "40vw",minWidth:'40vw',maxWidth:"45vw",height:'300px' ,margin:"15px 0 15px 3vh"})};
     flex:1;
     margin: 15px;
     position: relative;
@@ -13,28 +13,28 @@ const Container = styled.div`
     max-width: 22vw;
     height: 500px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #f5fdfd;
 `
 
 const Circle = styled.div`
-
-    width: 200px;
-    height: 200px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     position: absolute;
     background-color: #fff;
     display: flex;
 `
 const Image = styled.img`
-    ${mobile({ width: "90%" })};
+    ${mobile({ width: "100%" ,height:'250px'})};
     height: 100%;
     width: 100%;
     z-index: 2;
 `
 const Info = styled.div`
-    ${mobile({ width: "90vw",maxWidth:"90vw" })};
+    ${mobile({ width: "42vw",maxWidth:"45vw",height:'250px' })};
     opacity: 0;
     width: 100%;
     height: 100%;
@@ -76,6 +76,7 @@ const Product = ({ item }) => {
         <Container onMouseOver={()=> setHovered(true)} onMouseOut={()=> setHovered(false)}>
             <Circle />
                 {hovered ? <Image src={item.extraImg[1]}/> : <Image src={item.extraImg[0]} />}
+                <Link to={`/product/${item._id}`}>{item.title}</Link>
             <Info>
                
                 <Icon>

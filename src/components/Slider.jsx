@@ -81,16 +81,17 @@ padding:10px;
 font-size: 20px;
 background-color: transparent;
 cursor: pointer;
+width: 100%;
 
 `
 
 const Image = styled.img`
-    ${mobile({ padding: "0" ,width:"205vw",height:"80vh"})};
+    ${mobile({ padding: "0" ,width:"220vw",height:"80vh"})};
     height: 100%;
     width: 100%;
 `
 const Link1 = styled.div`
-    ${mobile({ width: "44vw",top:"80%",left:"23%" })};
+    ${mobile({ width: "50vw",top:"80%",left:"23%" })};
     background-color: white;
     position: absolute;
     top: 87%;

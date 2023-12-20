@@ -10,7 +10,7 @@ const Container = styled.div`
     ${mobile({ width: "100vw",height:"auto",padding:"5vh 0"})};
     height: 100vh;
     width: 100vw;
-    background: linear-gradient(rgba(255,255,255,0.5),rgba(0,0,0,0.2)) ,url('https://wallpapers.com/images/high/mens-fashion-photography-4p2izmj9ba6dkycl.webp') center no-repeat;
+    background: linear-gradient(rgba(255,255,255,0.5),rgba(0,0,0,0.2)) ,url('https://firebasestorage.googleapis.com/v0/b/shop-d7c5d.appspot.com/o/background.jpg?alt=media&token=5d8328d7-b1d5-4b30-bd2e-34d164d0c5d1') center no-repeat;
     background-size: cover;
     display: flex;
     align-items: center;
