@@ -6,7 +6,7 @@ import { mobile } from '../responsive';
 import { Link } from 'react-router-dom';
 const Container = styled.div`
     width: 100vw;
-    ${mobile({ width: "100vw" })};
+    ${mobile({ width: "100vw" ,height:'83vh'})};
     margin-top:10px;
     height: 100vh;
     width: 100%;
@@ -37,7 +37,7 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
     width: 100%;
-    ${mobile({ width: "90vw" })};
+    ${mobile({ width: "90vw" ,height:'83vh'})};
     height:100%;
     display: flex;
     transform: translateX(${props=>props.slideIndex * - 100}vw);
@@ -45,7 +45,7 @@ const Wrapper = styled.div`
 `
 
 const Slide = styled.div`
-    ${mobile({ width: "100vw" })};
+    ${mobile({ width: "100vw",height:'83vh' })};
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -55,7 +55,7 @@ const Slide = styled.div`
 `
 
 const ImageContainer = styled.div`
-${mobile({ width: "100vw" })};
+${mobile({ width: "100vw" ,height:'83vh'})};
 ${mobile({ marginRight: "50vw" })};
 width: 100vw;
 
@@ -85,12 +85,12 @@ cursor: pointer;
 `
 
 const Image = styled.img`
-    ${mobile({ padding: "0" ,width:"205vw",height:"100vh"})};
+    ${mobile({ padding: "0" ,width:"205vw",height:"80vh"})};
     height: 100%;
     width: 100%;
 `
 const Link1 = styled.div`
-    ${mobile({ width: "44vw",top:"84%",left:"23%" })};
+    ${mobile({ width: "44vw",top:"80%",left:"23%" })};
     background-color: white;
     position: absolute;
     top: 87%;

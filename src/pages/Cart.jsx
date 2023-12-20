@@ -276,7 +276,7 @@ const Cart = () => {
                             </SummaryItem>
                             <SummaryItem type="total">
                                 <SummaryItemText>Total</SummaryItemText>
-                                <SummaryItemPrice>₹{total}</SummaryItemPrice>
+                                <SummaryItemPrice>₹{couponeffect ? cart.total - 0.1*cart.total : cart.total}</SummaryItemPrice>
                             </SummaryItem>
                             <SummaryItem>
                                 <Input placeholder='Apply Coupon' onChange={(e) => setCoupon(e.target.value)} />
