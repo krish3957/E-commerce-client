@@ -136,7 +136,7 @@ const Navbar = () => {
         </Dropdown>}
         </Left>
         <Center>
-          <Link style={{ width: "100%", display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }} to={"/"}><Logo src='https://firebasestorage.googleapis.com/v0/b/shop-d7c5d.appspot.com/o/output_image.jpeg?alt=media&token=04079026-795d-4978-b602-cc9700cce279' /></Link>
+          <Link style={{ width: "100%", display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }} to={"/"}><Logo src='https://firebasestorage.googleapis.com/v0/b/shop-d7c5d.appspot.com/o/Asset%201-8.png?alt=media&token=ed464fde-0ef3-4ce6-87d5-8264f9dfbd49' /></Link>
         </Center>
         <Right>
           {!user ? <><MenuItem>
