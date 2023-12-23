@@ -226,7 +226,8 @@ const Cart = () => {
                     <TopTexts>
                         <TopText>SHOPPING BAG({cart.quantity})</TopText>
                     </TopTexts>
-                    {user ? <Link to={'/address'}><Button>Checkout Now</Button></Link> : <Link to={'/login'}><Button>Checkout Now</Button></Link>}
+                    <Link to={'/address'}><Button>Checkout Now</Button></Link> 
+                    {/* : <Link to={'/login'}><Button>Checkout Now</Button></Link>} */}
                 </Top>
                 <Botttom>
                     <Info>
@@ -279,7 +280,9 @@ const Cart = () => {
                                 <Input placeholder='Apply Coupon' onChange={(e) => setCoupon(e.target.value)} />
                                 <Apply onClick={handleCoupon}>Apply</Apply>
                             </SummaryItem>
-                            {user ? <Link to={'/address'}><Button>Checkout Now</Button></Link> : <Link to={'/login'}><Button>Checkout Now</Button></Link>}
+                            
+                            <Link to={'/address'}><Button>Checkout Now</Button></Link> 
+                            {/* : <Link to={'/login'}><Button>Checkout Now</Button></Link>} */}
                         </Summary>
                     </JackInTheBox>
                 </Botttom>
