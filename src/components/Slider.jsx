@@ -44,7 +44,7 @@ const Container = styled.div`
 // `
 
 const Slide = styled.div`
-    ${mobile({ width: "100vw", height: '83vh' })};
+    ${mobile({ width: "100vw", height: '78vh' })};
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -54,10 +54,8 @@ const Slide = styled.div`
 `
 
 const ImageContainer = styled.div`
-${mobile({ width: "100vw", height: '83vh' })};
-${mobile({ marginRight: "50vw" })};
+${mobile({ width: "100vw", height: '75vh' })};
 width: 100vw;
-
 height: 100%;
 `
 // const InfoContainer = styled.div`
@@ -76,11 +74,12 @@ height: 100%;
 // letter-spacing: 3px;
 // `
 const Button = styled.button`
+    ${mobile({padding:'5px 0'})};
     padding:10px;
     font-size: 20px;
     border-radius: 0.4em;
     box-shadow: 0.1em 0.1em;
-    background-color: #FBCA1F;
+    background-color: #ff0000;
     cursor: pointer;
     width: 100%;
     &:hover{
@@ -100,13 +99,13 @@ const Image = styled.img`
     width: 100%;
 `
 const Image1 = styled.img`
-    ${mobile({ display: 'block', padding: "0", width: "100vw", height: "85vh" })};
+    ${mobile({ display: 'block', padding: "0", width: "100vw", height: "75vh" })};
     display: none;
     height: 100%;
     width: 100%;
 `
 const Link1 = styled.div`
-    ${mobile({ width: "40vw", top: "90%", left: "60%" })};
+    ${mobile({ width: "40vw", top: "80%", left: "60%" })};
     background-color: white;
     border-radius: 10px;
     position: absolute;
