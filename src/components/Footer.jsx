@@ -91,9 +91,11 @@ function Footer() {
                 <Fade direction="up" triggerOnce duration={200} >
                     <Title>Sev7n.in</Title>
                     <Desc>Thank you for visiting our website! We strive to provide you with the best experience and information possible.</Desc>
-                    <SocialIcons>
-                        <Link href='https://www.instagram.com/sev7n.in/' target='_blank'><Icon><FaInstagram size={'22px'} /></Icon></Link>
-                    </SocialIcons>
+                    <strong>Follow Us:
+                        <SocialIcons>
+                            <Link href='https://www.instagram.com/sev7n.in/' target='_blank'><Icon><FaInstagram size={'22px'} /></Icon></Link>
+                        </SocialIcons>
+                    </strong>
                 </Fade>
             </Left>
             <Center>
@@ -104,7 +106,7 @@ function Footer() {
                         <Items><Link href='/policies/shipping-policy'>Shipping Policy</Link></Items>
                         <Items><Link href='/policies/privacy-policy'>Privacy Policy</Link></Items>
                         <Items><Link href='/policies/terms-of-service'>Terms and Condition</Link></Items>
-                        <Items><Link href='/contact'>Contact Us</Link></Items>
+                        <Items><Link href='/contact'>About Us</Link></Items>
                     </List>
                 </Fade>
             </Center>
