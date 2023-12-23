@@ -79,7 +79,7 @@ const Button = styled.button`
     font-size: 20px;
     border-radius: 0.4em;
     box-shadow: 0.1em 0.1em;
-    background-color: #ff0000;
+    background-color: darkcyan;
     cursor: pointer;
     width: 100%;
     &:hover{
@@ -105,7 +105,7 @@ const Image1 = styled.img`
     width: 100%;
 `
 const Link1 = styled.div`
-    ${mobile({ width: "40vw", top: "80%", left: "60%" })};
+    ${mobile({ width: "40vw", top: '68vh', left: "60%" })};
     background-color: white;
     border-radius: 10px;
     position: absolute;
