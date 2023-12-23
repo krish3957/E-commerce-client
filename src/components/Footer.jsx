@@ -20,6 +20,7 @@ font-family: 'Urbanist', sans-serif;
 `
 
 const Left = styled.div`
+    ${mobile({padding: "0px"})};
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -27,10 +28,12 @@ const Left = styled.div`
     font-size: 18px;
 `
 const Center = styled.div`
+    ${mobile({padding: "0px"})};
     flex: 1;
     padding-left: 40px;
 `
 const Right = styled.div`
+    ${mobile({padding: "0px"})};
     flex: 1;
     padding-left: 20px;
 `
@@ -100,7 +103,7 @@ function Footer() {
             </Left>
             <Center>
                 <Fade direction="up" triggerOnce duration={200} >
-                    <ListTitle>Important Links</ListTitle>
+                    <Title> Important Links</Title>
                     <List>
                         <Items><Link href='/'>Home</Link></Items>
                         <Items><Link href='/policies/shipping-policy'>Shipping Policy</Link></Items>

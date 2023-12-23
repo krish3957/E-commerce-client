@@ -80,7 +80,7 @@ const CancelledPrice = styled.span`
     text-decoration: line-through;
 `
 const Desc = styled.div`
-    font-size: 25px;
+    font-size: 18px;
     margin-bottom: 20px;
 `
 
@@ -151,7 +151,7 @@ const AmountContainer = styled.div`
     align-items: center;
 `
 const Size = styled.img`
-    ${mobile({ width: "100%",height:'100px', padding: "0" })};
+    ${mobile({ width: "100%", height: '100px', padding: "0" })};
     width:45vw;
 `
 
@@ -239,11 +239,14 @@ const Product = () => {
                 <InfoContainer>
                     <Title>{product.title}</Title>
                     <Desc>{product.desc}</Desc>
-                    <ul style={{ fontSize: '20px' }}>
-                        <li>240 GSM Cotton</li>
+                    <dl style={{ fontSize: '20px' }}>
+                    <strong>Product Details:</strong>
+                        <li>Unisex</li>
+                        <li>100% Cotton</li>
+                        <li>240 GSM</li>
                         <li>Bio Wash</li>
-                        <li>Do not Iron or Brush on Print</li>
-                    </ul>
+                        <li>Don't Iron/Brush on Print</li>
+                    </dl>
                     <Price>₹{product.price}
                         <CancelledPrice> ₹1299</CancelledPrice>
                     </Price>
@@ -264,7 +267,7 @@ const Product = () => {
                                     <Option key={index}>{s}</Option>
                                 ))}
                             </Select>
-                            <span style={{width:'100px',cursor:'pointer',textDecoration:'underline',margin:'5px'}} onClick={() => setSizeOn(!sizeOn)}>SIZE CHART</span>
+                            <span style={{ width: '100px', cursor: 'pointer', textDecoration: 'underline', margin: '5px' }} onClick={() => setSizeOn(!sizeOn)}>SIZE CHART</span>
                         </Filter>
                     </FilterContainer>
                     {sizeOn && <Size src='https://firebasestorage.googleapis.com/v0/b/shop-d7c5d.appspot.com/o/Size%20(1).jpg?alt=media&token=ec051dbe-2a41-4da5-b92c-42d44239f59c' alt='size chart' />}
