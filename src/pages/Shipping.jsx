@@ -56,12 +56,12 @@ const Shipping = () => {
             <br/>
             <Strong>RETURNS & EXCHANGE</Strong>
             <br/>
-            <P>All sales are final. We do not accept returns or exchanges at the moment. Please be sure of the size. If you need any help with it, feel free to reach out at sev7n.in@gmail.com or DM us on our </P>
-            <a href="https://www.instagram.com/sev7n.in/" title="Instagram ID" rel='noreferrer' target="_blank">instagram page</a>
+            <P>All sales are final. We do not accept returns or exchanges at the moment. Please be sure of the size. If you need any help with it, feel free to reach out at <strong>sev7n.in@gmail.com</strong> or DM us on our </P>
+            <strong style={{fontSize:'18px'}}><a href="https://www.instagram.com/sev7n.in/" title="Instagram ID" rel='noreferrer' target="_blank">Instagram Page</a></strong>
             <Br></Br>
             <Strong>DAMAGED ITEMS</Strong>
             <Br/>
-            <P>If you have received a damaged product, we apologize. We are more than willing to help you out. Please click a picture of the product and email at sev7n.in@gmail.com </P>
+            <P>If you have received a damaged product, we apologize. We are more than willing to help you out. Please click a picture of the product and email at <strong>sev7n.in@gmail.com</strong> </P>
             <Br/>
             <Strong>REFUNDS</Strong>
             <P>Refunds are only issued if you have received a damaged product.</P>
