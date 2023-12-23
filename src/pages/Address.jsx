@@ -114,7 +114,7 @@ const Address = () => {
                 }).then((result) => {
                     if (result.status === 201) {
                         alert('Succesful');
-                        dispatch(login({ email: data.email, password: pass }));
+                        login(dispatch, { email:data.email,password: pass });
                     }
                 }).catch(err =>{
                     alert(err.response.data.message + "Please Sign in");
@@ -124,7 +124,7 @@ const Address = () => {
         }
         if(!user)
             handleSignUp();
-        else{
+        if(!error){
         const TransactionId = 'T' + Date.now() + data.email;
         axios.post('https://e-commerce-api-psi.vercel.app/api/phonepe/newPayment', {
             "name": data.lname,
