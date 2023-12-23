@@ -226,8 +226,7 @@ const Cart = () => {
                     <TopTexts>
                         <TopText>SHOPPING BAG({cart.quantity})</TopText>
                     </TopTexts>
-                    <Link to={'/address'}><Button>Checkout Now</Button></Link> 
-                    {/* : <Link to={'/login'}><Button>Checkout Now</Button></Link>} */}
+                    {user ? <Link to={'/address'}><Button>Checkout Now</Button></Link>  : <Link to={'/login'}><Button>Checkout Now</Button></Link>}
                 </Top>
                 <Botttom>
                     <Info>
@@ -281,8 +280,7 @@ const Cart = () => {
                                 <Apply onClick={handleCoupon}>Apply</Apply>
                             </SummaryItem>
                             
-                            <Link to={'/address'}><Button>Checkout Now</Button></Link> 
-                            {/* : <Link to={'/login'}><Button>Checkout Now</Button></Link>} */}
+                            {user ? <Link to={'/address'}><Button>Checkout Now</Button></Link>  : <Link to={'/login'}><Button>Checkout Now</Button></Link>}
                         </Summary>
                     </JackInTheBox>
                 </Botttom>

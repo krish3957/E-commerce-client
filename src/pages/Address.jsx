@@ -70,16 +70,6 @@ const Address = () => {
     const [country, saveCountry] = useState('');
     const [zipcode, saveZipCode] = useState('');
     const [phone, savePhone] = useState('');
-    const dispatch = useDispatch();
-    const [data, setData] = useState(null);
-    const [pass, setPass] = useState('');
-    const[error,setError] = useState(false);
-    const handleChange = (e) => {
-        setData(prev => {
-            return { ...prev, [e.target.name]: e.target.value }
-        }
-        )
-    }
     const cart = useSelector(state => state.cart);
     const dis = useSelector(state => state.cart.discount);
 
@@ -103,31 +93,9 @@ const Address = () => {
     }, [add1, add2, city, state1, country, zipcode, phone])
     
     const handlePayment = useCallback(async () => {
-        const handleSignUp = () => {
-                const res = publicRequest.post('auth/register', {
-                    username: data.email,
-                    email: data.email,
-                    fname: data.fname,
-                    lname: data.lname,
-                    password: pass,
-                    id: data.email
-                }).then((result) => {
-                    if (result.status === 201) {
-                        alert('Succesful');
-                        login(dispatch, { email:data.email,password: pass });
-                    }
-                }).catch(err =>{
-                    alert(err.response.data.message + "Please Sign in");
-                    location.replace('/login');
-                    setError(true);
-                });
-        }
-        if(!user)
-            handleSignUp();
-        if(!error){
-        const TransactionId = 'T' + Date.now() + data.email;
+        const TransactionId = 'T' + Date.now() + user.email;
         axios.post('https://e-commerce-api-psi.vercel.app/api/phonepe/newPayment', {
-            "name": data.lname,
+            "name": user.lname,
             transactionId: 'T' + Date.now(),
             "MUID": "MUID" + Date.now(),
             "amount": dis ? cart.total - 0.1 * cart.total : cart.total,
@@ -142,7 +110,7 @@ const Address = () => {
                 // console.error(error);
             });
         }
-    }, [cart, dis, address,error,dispatch,pass,data, user])
+    , [cart, dis, address,user])
 
 
     return (
@@ -150,31 +118,6 @@ const Address = () => {
             <Navbar></Navbar>
             <Wrapper>
                 <Form>
-                    {!user &&
-                        <Row>
-                        <div className="inputbox">
-                            <Span>First Name</Span>
-                            <input required="required" name='fname' type="text" onChange={handleChange} style={{ maxWidth: '600px' }} />
-                            <i />
-                        </div>
-                        <div className="inputbox">
-                            <Span>Last Name</Span>
-                            <input required="required" name='lname' type="text" onChange={handleChange} style={{ maxWidth: '600px' }} />
-                            <i />
-                        </div>
-                    </Row>}
-                    {!user && <Row>
-                        <div className="inputbox">
-                            <Span>Email</Span>
-                            <input required="required" name='email' type="text" onChange={handleChange} style={{ maxWidth: '600px' }} />
-                            <i />
-                        </div>
-                        <div className="inputbox">
-                            <Span>Create a password</Span>
-                            <input required="required" name='pass' type='password' onChange={(e) => setPass(e.target.value)} />
-                            <i />
-                        </div>
-                    </Row>}
                     <Row>
                         <div className="inputbox">
                             <Span>Address Line 1</Span>
