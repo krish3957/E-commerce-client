@@ -132,7 +132,7 @@ const Navbar = () => {
             {!user && <ListItem><Link style={{ marginLeft: "-15%", textDecoration: 'none', color: 'black' }} to={"/register"}>Register</Link></ListItem>}
             {user && <ListItem><Link style={{ marginLeft: "-15%", textDecoration: 'none', color: 'black' }} to={"/orders/" + user._id}>Orders</Link></ListItem>}
             {user &&<ListItem><Link style={{ marginLeft: "-15%", textDecoration: 'none', color: 'black' }} onClick={handleLogout}>Logout</Link></ListItem>}
-            <ListItem><Link style={{ marginLeft: "-15%", textDecoration: 'none', color: 'black' }} to={"/support"}>Support</Link></ListItem>
+            <ListItem><Link style={{ marginLeft: "-15%", textDecoration: 'none', color: 'black' }} to={"/support"}>Customer Support</Link></ListItem>
           </List>
         </Dropdown>}
         </Left>

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { mobile } from '../responsive';
 
 const Container = styled.div`
-    ${mobile({ width: "40vw",minWidth:'40vw',maxWidth:"45vw",height:'300px' ,margin:"15px 0 15px 3vh"})};
+    ${mobile({ width: "40vw", minWidth: '40vw', maxWidth: "45vw", height: '300px', margin: "15px 0 15px 3vh" })};
     flex:1;
     margin: 15px;
     position: relative;
@@ -20,6 +20,8 @@ const Container = styled.div`
 `
 
 const Circle = styled.div`
+    ${mobile({ width: "50px", height: '50px',display: "none" })};
+    display: "none" ;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -28,13 +30,13 @@ const Circle = styled.div`
     display: flex;
 `
 const Image = styled.img`
-    ${mobile({ width: "100%" ,height:'250px'})};
+    ${mobile({ width: "100%", height: '250px' })};
     height: 100%;
     width: 100%;
     z-index: 2;
 `
 const Info = styled.div`
-    ${mobile({ width: "42vw",maxWidth:"45vw",height:'250px' })};
+    ${mobile({ width: "42vw", maxWidth: "45vw", height: '250px', opacity: '1', background: 'transparent' })};
     opacity: 0;
     width: 100%;
     height: 100%;
@@ -53,6 +55,7 @@ const Info = styled.div`
 
 `
 const Icon = styled.div`
+    ${mobile({ opacity: '0' })};
     margin: 20px;
     width: 40px;
     height: 40px;
@@ -73,19 +76,21 @@ const Product = ({ item }) => {
     const [hovered, setHovered] = React.useState(false);
 
     return (
-        <Container onMouseOver={()=> setHovered(true)} onMouseOut={()=> setHovered(false)}>
-            <Circle />
-                {hovered ? <Image src={item.extraImg[1]}/> : <Image src={item.extraImg[0]} />}
-                <Link style={{textDecoration:'none',color:'black',fontWeight:'700'}} to={`/product/${item._id}`}>{item.title}</Link>
-            <Info>
-               
-                <Icon>
-                    <Link to={`/product/${item._id}`}>
-                        <AiOutlineSearch />
-                    </Link>
-                </Icon>
-               
-            </Info>
+        <Container onMouseOver={() => setHovered(true)} onMouseOut={() => setHovered(false)}>
+            <Link style={{ textDecoration: 'none', color: 'black', fontWeight: '700' }} to={`/product/${item._id}`}>
+                {hovered ? <Image src={item.extraImg[1]} /> : <Image src={item.extraImg[0]} />}
+                {/* <Link style={{textDecoration:'none',color:'black',fontWeight:'700'}} to={`/product/${item._id}`}> */}
+                {item.title}
+                <Info>
+
+                    <Icon>
+                        <Link to={`/product/${item._id}`}>
+                            <AiOutlineSearch />
+                        </Link>
+                    </Icon>
+
+                </Info>
+            </Link>
         </Container>
     )
 }

@@ -16,7 +16,7 @@ const Container = styled.div`
 const Announcement = () => {
     return (
         <Container>
-            Free Delivery for all the orders
+            Free Delivery for the first 100 orders
         </Container>
     );
 }

@@ -39,14 +39,14 @@ const ImageContainer = styled.div`
     flex: 1;
 `
 const Image = styled.img`
-    ${mobile({ width: "90%",height:'450px', padding: "0 5%" })};
+    ${mobile({ width: "90%", height: '450px', padding: "0 5%" })};
     padding: 0 5vw 0 2vw;
     width: 35vw;
     height: 100vh;
 `
 
 const Circle = styled.div`
-    ${mobile({right:'0vw'})}
+    ${mobile({ right: '0vw' })}
     display: flex;
     align-items: center;
     justify-content: center ;
@@ -150,6 +150,10 @@ const AmountContainer = styled.div`
     justify-content: space-between;
     align-items: center;
 `
+const Size = styled.img`
+    ${mobile({ width: "100%",height:'100px', padding: "0" })};
+    width:45vw;
+`
 
 const Button = styled.button`
     ${mobile({ marginTop: "1vh", padding: "2vh 5vw" })};
@@ -175,6 +179,7 @@ const Product = () => {
     const [added, setAdded] = useState(false);
     const [product, setProduct] = useState({});
     const [slideIndex, setSlideIndex] = useState(0);
+    const [sizeOn, setSizeOn] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -221,21 +226,26 @@ const Product = () => {
             <Announcement />
             <Wrapper>
                 <ImageContainer slideIndex={slideIndex}>
-                    <Circle pos='left' onClick={() => {setSlideIndex((prev) => prev > 0 ? prev - 1 : product.extraImg?.length - 1);}}>
+                    <Circle pos='left' onClick={() => { setSlideIndex((prev) => prev > 0 ? prev - 1 : product.extraImg?.length - 1); }}>
                         <FaArrowLeft />
                     </Circle>
-                    {product.extraImg?.filter((item, index) => 
+                    {product.extraImg?.filter((item, index) =>
                         slideIndex === index
                     ).map(item1 => <Image src={item1}></Image>)}
-                    <Circle pos='right' onClick={() => setSlideIndex((prev) => prev < product.extraImg?.length -1 ? prev + 1 : 0)}>
+                    <Circle pos='right' onClick={() => setSlideIndex((prev) => prev < product.extraImg?.length - 1 ? prev + 1 : 0)}>
                         <FaArrowRight />
                     </Circle>
                 </ImageContainer>
                 <InfoContainer>
                     <Title>{product.title}</Title>
                     <Desc>{product.desc}</Desc>
+                    <ul style={{ fontSize: '20px' }}>
+                        <li>240 GSM Cotton</li>
+                        <li>Bio Wash</li>
+                        <li>Do not Iron or Brush on Print</li>
+                    </ul>
                     <Price>₹{product.price}
-                        <CancelledPrice> ₹1199</CancelledPrice>
+                        <CancelledPrice> ₹1299</CancelledPrice>
                     </Price>
                     <FilterContainer>
                         <Filter>
@@ -254,8 +264,10 @@ const Product = () => {
                                     <Option key={index}>{s}</Option>
                                 ))}
                             </Select>
+                            <span style={{width:'100px',cursor:'pointer',textDecoration:'underline',margin:'5px'}} onClick={() => setSizeOn(!sizeOn)}>SIZE CHART</span>
                         </Filter>
                     </FilterContainer>
+                    {sizeOn && <Size src='https://firebasestorage.googleapis.com/v0/b/shop-d7c5d.appspot.com/o/Size%20(1).jpg?alt=media&token=ec051dbe-2a41-4da5-b92c-42d44239f59c' alt='size chart' />}
                     <AddContainer>
                         <AmountContainer>
                             <MdRemove onClick={() => handleQuatity("desc")} />

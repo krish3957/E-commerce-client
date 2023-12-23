@@ -118,10 +118,6 @@ function Footer() {
                         <ContactItem>Bhuj, Kutch,Gujrat</ContactItem>
                     </ContactList>
                     <ContactList>
-                        <BsFillTelephoneFill size={'22px'} />
-                        <ContactItem>+91 9687503343</ContactItem>
-                    </ContactList>
-                    <ContactList>
                         <AiTwotoneMail size={'22px'} />
                         <ContactItem>sev7n.in@gmail.com</ContactItem>
                     </ContactList>

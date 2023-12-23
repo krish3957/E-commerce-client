@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { mobile } from '../responsive';
 import { AiFillDelete } from "react-icons/ai";
 import { discoutTen, removeProduct } from '../redux/cartRedux';
-import { publicRequest } from '../requestMethod';
 import { Fade, JackInTheBox } from 'react-awesome-reveal';
 
 const Container = styled.div`
