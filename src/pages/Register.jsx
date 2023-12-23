@@ -6,6 +6,8 @@ import { Navigate } from "react-router-dom";
 import { auth, provider } from "../config.js";
 import { signInWithPopup } from "firebase/auth";
 import { mobile } from "../responsive";
+import { login } from "../redux/apiCalls.js";
+import { useDispatch } from "react-redux";
 const Container = styled.div`
     ${mobile({ width: "100vw",height:"auto",padding:"5vh 0"})};
     height: 100vh;
@@ -109,7 +111,7 @@ const Or = styled.div`
 `
 
 const Register = () => {
-
+    const dispatch = useDispatch();    
     const [data, setData] = useState(null);
     const handleChange = (e) => {
         setData(prev => {
@@ -136,6 +138,7 @@ const Register = () => {
                 if (result.status === 201) {
                     <Navigate to={'/login'} />
                     alert('Succesful');
+                    login(dispatch, { email: data.email, password: pass });
                 }
             }).catch(err =>{
                 setError(err.response.data.message);
@@ -158,15 +161,16 @@ const Register = () => {
                     lname: result.user.displayName.split(" ")[1],
                     password: result.user.uid,
                     id: result.user.displayName
-                }).then((result) => {
-                    if (result.status === 201) {
-                        <Navigate to={'/login'} />
+                }).then((result1) => {
+                    if (result1.status === 201) {
                         alert('Succesful');
+                        login(dispatch, { email: result.user.email, password: result.user.uid });
                     }
                 }).catch(err =>{
                     setError(err.response.data.message);
                     alert(err.response.data.message);
                 });
+                console.log(result);
             }).catch((error) => {
                 alert(error.response.data.message);
             });

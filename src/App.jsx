@@ -19,6 +19,7 @@ import TermsOfServices from "./pages/Terms_Of_Services";
 import Contact from "./pages/Contact";
 import Shipping from "./pages/Shipping";
 import Privacy from "./pages/Privacy";
+import Support from "./pages/Support";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
         <Route path="/contact" Component={Contact} />
         <Route path="/policies/shipping-policy" Component={Shipping} />
         <Route path="/policies/privacy-policy" Component={Privacy} />
+        <Route path="/support" Component={Support} />
       </Routes>
     </Router>
   );

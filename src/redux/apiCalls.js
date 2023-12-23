@@ -10,7 +10,7 @@ export const login = async(dispatch,user)=>{
     }
     catch(err){
         dispatch(loginFailure());
-        alert(err.response.data.message + " Or IF Registered With email then try email and password" );
+        alert(err.response.data.message + "Or try SIGN IN with Google" );
     }
 }
 

@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import { useSelector } from 'react-redux';
 import { mobile } from '../responsive';
 import { publicRequest, userRequest } from '../requestMethod';
+import { state } from '../data';
 const location = window.location;
 const Container = styled.div`
     ${mobile({ width: "100vw", padding: 0 })};
@@ -66,7 +67,7 @@ const Address = () => {
     const [add1, saveAdd1] = useState('');
     const [add2, saveAdd2] = useState('');
     const [city, saveCity] = useState('');
-    const [state, saveState] = useState('');
+    const [state1, saveState] = useState('Andhra Pradesh');
     const [country, saveCountry] = useState('');
     const [zipcode, saveZipCode] = useState('');
     const [phone, savePhone] = useState('');
@@ -82,7 +83,7 @@ const Address = () => {
                 address_1: add1,
                 address_2: add2,
                 City: city,
-                State: state,
+                State: state1,
                 Country: country,
                 ZipCode: zipcode,
                 phone: phone
@@ -139,7 +140,11 @@ const Address = () => {
                         </div>
                         <div className="inputbox">
                             <Span>State</Span>
-                            <input required="required" name='state' onChange={(e) => saveState(e.target.value)} />
+                            <select required="required" name='state' onChange={(e) => saveState(e.target.value)}>
+                            {state.map((item) => (
+                                <option value={item}>{item}</option>
+                            ))}
+                            </select>
                             <i />
                         </div>
                     </Row>
@@ -169,7 +174,7 @@ const Address = () => {
                 </Form>
                 <Buttons>
                     <Button onClick={() => {
-                        if (add1 === '' || add2 === '' || city === '' || state === '' || zipcode === '' || country === '') {
+                        if (add1 === '' || add2 === '' || city === '' || state1 === '' || zipcode === '' || country === '') {
                             alert('Save Valid address');
                         }
                         if (phone.length !== 10) {

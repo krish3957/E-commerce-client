@@ -121,7 +121,7 @@ const Or = styled.div`
 
 
 const Login = () => {
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const dispatch = useDispatch();
@@ -130,14 +130,14 @@ const Login = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        login(dispatch, { username, password });
+        login(dispatch, { email:email,password: password });
     }
 
     const signInGoogle = () => {
         
         signInWithPopup(auth, provider)
             .then((result) => {
-                login(dispatch, { username: result.user.uid, password: result.user.uid });
+                login(dispatch, { email: result.user.email, password: result.user.uid });
             }).catch((error) => {
                 alert(error.response.data.message);
             });
@@ -149,7 +149,7 @@ const Login = () => {
                 <Wrapper>
                     <Title>SIGN IN</Title>
                     <Form>
-                        <Input placeholder="username" onChange={(e) => setUsername(e.target.value)} />
+                        <Input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
                         <Input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
                         <Button onClick={handleClick} disabled={isFetching}>LOGIN</Button>
                         {error && <Error >Something Went Wrong!!!</Error>}
