@@ -79,7 +79,7 @@ const Button = styled.button`
     font-size: 20px;
     border-radius: 0.4em;
     box-shadow: 0.1em 0.1em;
-    background-color: darkcyan;
+    background-color: transparent;
     cursor: pointer;
     width: 100%;
     &:hover{
@@ -105,7 +105,7 @@ const Image1 = styled.img`
     width: 100%;
 `
 const Link1 = styled.div`
-    ${mobile({ width: "40vw", top: '68vh', left: "60%" })};
+    ${mobile({ width: "40vw", top: '68vh', left: "48%" })};
     background-color: white;
     border-radius: 10px;
     position: absolute;
@@ -135,7 +135,7 @@ const Slider = () => {
             {SliderItems.map((item, index) => (
                 <Slide key={index} bg={item.bg}>
                     <ImageContainer>
-                        <Image1 src='https://firebasestorage.googleapis.com/v0/b/shop-d7c5d.appspot.com/o/SEVN%20.jpg?alt=media&token=fadaa97d-b74e-4995-8bfd-ec7fb7d0539b' />
+                        <Image1 src={item.mobileImg} />
                         <Image src={item.img} />
                     </ImageContainer>
                     {/* <InfoContainer>

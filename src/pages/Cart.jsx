@@ -198,7 +198,7 @@ const Cart = () => {
     const [couponeffect, setCouponeffect] = useState(false);
     const handleCoupon = (e) => {
         e.preventDefault();
-        if (coupon !== 'THALA') {
+        if (coupon !== 'THALA7') {
             alert('Enter a valid coupon');
         }
         else {
@@ -272,7 +272,7 @@ const Cart = () => {
                             </SummaryItem>
                             <SummaryItem type="total">
                                 <SummaryItemText>Total</SummaryItemText>
-                                <SummaryItemPrice>₹{couponeffect ? cart.total - 0.1*cart.total : cart.total}</SummaryItemPrice>
+                                <SummaryItemPrice>₹{(couponeffect && cart.total > 500) ? cart.total - 150 : cart.total}</SummaryItemPrice>
                             </SummaryItem>
                             <SummaryItem>
                                 <Input placeholder='Apply Coupon' onChange={(e) => setCoupon(e.target.value)} />

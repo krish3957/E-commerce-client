@@ -4,7 +4,7 @@ export  const SliderItems = [
         id:1,
         img: require('./Images/ImageMain.jpg'),
         // mobileImg:require('./Images/TK2L7272.jpg'),
-        mobileImg:require('./Images/TK2L7290.jpg'), 
+        mobileImg:require('./Images/SEVN_home.jpg'), 
         title:"Welcome to SEV7N",
         desc:"Discover Your Perfect Graphic T-shirts Here",
         bg:"ffddef"   

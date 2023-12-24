@@ -270,7 +270,7 @@ const Product = () => {
                             <span style={{ width: '100px', cursor: 'pointer', textDecoration: 'underline', margin: '5px' }} onClick={() => setSizeOn(!sizeOn)}>SIZE CHART</span>
                         </Filter>
                     </FilterContainer>
-                    {sizeOn && <Size src='https://firebasestorage.googleapis.com/v0/b/shop-d7c5d.appspot.com/o/Size%20(1).jpg?alt=media&token=ec051dbe-2a41-4da5-b92c-42d44239f59c' alt='size chart' />}
+                    {sizeOn && <Size src='https://firebasestorage.googleapis.com/v0/b/shop-d7c5d.appspot.com/o/Size%20(1).jpg?alt=media&token=7ff494cc-5aa8-43a9-b3d5-f2b4f794c0bd' alt='size chart' />}
                     <AddContainer>
                         <AmountContainer>
                             <MdRemove onClick={() => handleQuatity("desc")} />

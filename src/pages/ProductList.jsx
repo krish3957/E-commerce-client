@@ -77,7 +77,6 @@ const ProductList = () => {
 
             <Navbar />
             <Announcement />
-            <Title>T-shirts</Title>
             {/* <FilterContainer>
                 <Filter>
                     <FilterText>Filter By:</FilterText>
