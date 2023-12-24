@@ -57,7 +57,7 @@ const Products = ({ cat, filters, sort }) => {
 
     return (
         <Container>
-            <header style={{width:"100%",textAlign:"center",fontSize:"28px",lineHeight:'40px',fontWeight:"900",marginBottom:"20px",color:'darkblue',marginLeft:'20px'}}>Not An Ordinary Drop</header>
+            <header style={{width:"100%",textAlign:"center",fontSize:"28px",lineHeight:'40px',fontWeight:"900",marginBottom:"20px",color:'darkblue',marginLeft:'20px'}}>Class Of '23</header>
             {cat ? filterProducts.map((item,index) => (
                 <Product key={index} item={item} />
             )):products.map((item,index) => (
