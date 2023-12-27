@@ -13,7 +13,7 @@ const Container = styled.div`
     ${mobile({ width: "100vw", padding: 0 })};
 `
 var CryptoJS = require("crypto-js");
-const key = process.env.API_HASH.toString();
+const key = process.env.SECRET_KEY.toString();
 
 const Wrapper = styled.div`
     ${mobile({ width: "100vw", padding: 0 })};
