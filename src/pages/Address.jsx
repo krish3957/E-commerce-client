@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { mobile } from '../responsive';
 import { state } from '../data';
-import { publicRequest } from '../requestMethod';
+import { publicRequest, userRequest } from '../requestMethod';
 import { login } from '../redux/apiCalls';
 const location = window.location;
 const Container = styled.div`
@@ -94,7 +94,7 @@ const Address = () => {
     
     const handlePayment = useCallback(async () => {
         const TransactionId = 'T' + Date.now() + user.email;
-        axios.post('https://e-commerce-api-psi.vercel.app/api/phonepe/newPayment', {
+        userRequest('phonepe/newPayment', {
             "name": user.lname,
             transactionId: 'T' + Date.now(),
             "MUID": "MUID" + Date.now(),
