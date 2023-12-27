@@ -100,7 +100,7 @@ const Address = () => {
             transactionId: 'T' + Date.now(),
             "MUID": "MUID" + Date.now(),
             //Encrypt the amount
-            "amount":CryptoJS.AES.encrypt(cart.total.toString(),process.env.HASH).toString()
+            "amount":CryptoJS.AES.encrypt(dis ? (cart.total - 150).toString() :cart.total.toString(),process.env.API_HASH).toString()
         }).then((response) => {
             location.replace(response.data.redirectInfo.url);
             localStorage.setItem('address', JSON.stringify(address));
