@@ -13,6 +13,7 @@ const Container = styled.div`
     ${mobile({ width: "100vw", padding: 0 })};
 `
 var CryptoJS = require("crypto-js");
+const key = process.env.API_HASH;
 
 const Wrapper = styled.div`
     ${mobile({ width: "100vw", padding: 0 })};
@@ -100,7 +101,7 @@ const Address = () => {
             transactionId: 'T' + Date.now(),
             "MUID": "MUID" + Date.now(),
             //Encrypt the amount
-            "amount":CryptoJS.AES.encrypt(dis ? (cart.total - 150).toString() :cart.total.toString(),process.env.API_HASH.toString()).toString()
+            "amount":CryptoJS.AES.encrypt(dis ? (cart.total - 150).toString() :cart.total.toString(),key).toString()
         }).then((response) => {
             location.replace(response.data.redirectInfo.url);
             localStorage.setItem('address', JSON.stringify(address));
