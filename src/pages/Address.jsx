@@ -3,11 +3,10 @@ import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import Navbar from '../components/Navbar';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { mobile } from '../responsive';
 import { state } from '../data';
-import { key, publicRequest, userRequest } from '../requestMethod';
-import { login } from '../redux/apiCalls';
+import {  userRequest } from '../requestMethod';
 const location = window.location;
 const Container = styled.div`
     ${mobile({ width: "100vw", padding: 0 })};
@@ -101,7 +100,7 @@ const Address = () => {
             transactionId: 'T' + Date.now(),
             "MUID": "MUID" + Date.now(),
             //Encrypt the amount
-            "amount":CryptoJS.AES.encrypt(dis ? (cart.total - 150).toString() :cart.total.toString(),key).toString()
+            "amount":CryptoJS.AES.encrypt(dis ? (cart.total - 150).toString() :cart.total.toString(),'ABCDEFGH').toString()
         }).then((response) => {
             location.replace(response.data.redirectInfo.url);
             localStorage.setItem('address', JSON.stringify(address));
