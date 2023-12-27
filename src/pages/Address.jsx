@@ -1,7 +1,7 @@
 import './Address.css';
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+
 import Navbar from '../components/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { mobile } from '../responsive';
@@ -12,6 +12,7 @@ const location = window.location;
 const Container = styled.div`
     ${mobile({ width: "100vw", padding: 0 })};
 `
+var CryptoJS = require("crypto-js");
 
 const Wrapper = styled.div`
     ${mobile({ width: "100vw", padding: 0 })};
@@ -94,17 +95,19 @@ const Address = () => {
     
     const handlePayment = useCallback(async () => {
         const TransactionId = 'T' + Date.now() + user.email;
-        userRequest('phonepe/newPayment', {
+        userRequest.post('phonepe/newPayment', {
             "name": user.lname,
             transactionId: 'T' + Date.now(),
             "MUID": "MUID" + Date.now(),
-            "amount": dis ? cart.total - 0.1 * cart.total : cart.total,
+            //Encrypt the amount
+            "amount":CryptoJS.AES.encrypt(cart.total.toString(),process.env.HASH).toString()
         }).then((response) => {
             location.replace(response.data.redirectInfo.url);
             localStorage.setItem('address', JSON.stringify(address));
             localStorage.setItem('orderId', TransactionId);
         })
             .catch((error) => {
+                console.log(error);
                 console.log('error');
                 // console.log(error);
                 // console.error(error);
