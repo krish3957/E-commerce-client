@@ -6,14 +6,14 @@ import Navbar from '../components/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { mobile } from '../responsive';
 import { state } from '../data';
-import { publicRequest, userRequest } from '../requestMethod';
+import { key, publicRequest, userRequest } from '../requestMethod';
 import { login } from '../redux/apiCalls';
 const location = window.location;
 const Container = styled.div`
     ${mobile({ width: "100vw", padding: 0 })};
 `
 var CryptoJS = require("crypto-js");
-const key = process.env.SECRET_KEY.toString();
+
 
 const Wrapper = styled.div`
     ${mobile({ width: "100vw", padding: 0 })};
