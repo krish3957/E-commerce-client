@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = process.env.API_URL || "http://localhost:5000/api/";
-export const key = process.env.SECRET_KEY?.toString();
+const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api/";
+export const key = process.env.REACT_APP_SECRET_KEY?.toString();
 
 const storage = JSON.parse(localStorage.getItem("persist:root"));
 const user = storage && storage.user;

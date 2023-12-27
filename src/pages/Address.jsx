@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar';
 import { useSelector } from 'react-redux';
 import { mobile } from '../responsive';
 import { state } from '../data';
-import {  userRequest } from '../requestMethod';
+import {  key, userRequest } from '../requestMethod';
 const location = window.location;
 const Container = styled.div`
     ${mobile({ width: "100vw", padding: 0 })};
@@ -100,7 +100,7 @@ const Address = () => {
             transactionId: 'T' + Date.now(),
             "MUID": "MUID" + Date.now(),
             //Encrypt the amount
-            "amount":CryptoJS.AES.encrypt(dis ? (cart.total - 150).toString() :cart.total.toString(),'ABCDEFGH').toString()
+            "amount":CryptoJS.AES.encrypt(dis ? (cart.total - 150).toString() :cart.total.toString(),key).toString()
         }).then((response) => {
             location.replace(response.data.redirectInfo.url);
             localStorage.setItem('address', JSON.stringify(address));
