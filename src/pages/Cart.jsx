@@ -198,7 +198,7 @@ const Cart = () => {
     const [couponeffect, setCouponeffect] = useState(false);
     const handleCoupon = (e) => {
         e.preventDefault();
-        if (coupon !== 'THALA7') {
+        if (coupon !== 'HAPPYNEWYEAR') {
             alert('Enter a valid coupon');
         }
         else {
